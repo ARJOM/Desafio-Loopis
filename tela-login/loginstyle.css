@@ -1,7 +1,7 @@
 body {
     margin: 0;
     padding: 0;
-    background-image: linear-gradient(to left,#008B45,#2E8B57,#43CD80,#90EE90);
+    background-color: #1C1C1C;
 }
 
 .container {
@@ -12,9 +12,8 @@ body {
 }
 
 .login-box {
-    position: relative;
     padding: 100px;
-    background-color: #F8F8FF;
+    background-color: #f8f8ff;
     width: 300px;
     height: 300px;
     border-radius: 20px;
@@ -42,8 +41,8 @@ body {
 
 .sign-in {
     padding: 5px;
-    border-radius: 5px;
     border: none;
+    border-bottom: 1px solid #43CD80;
 }
 
 #submit {
@@ -66,8 +65,8 @@ body {
 .login a {
     text-align: center;
     margin: 2px;
-    color: black;
-    font-size: 18px;
+    color: #B5B5B5;
+    font-size: 14px;
     text-decoration: none;
     font-family: 'Open Sans Condensed', sans-serif;
 }
@@ -76,19 +75,9 @@ body {
     text-decoration: underline;
 }
 
-img {
-    position: absolute;
-    left: 38%;
-    top: 0;
-    padding: 10px;
-}
-
 @media (max-width:400px){
     .login-box {
         width: 35vw;
-    }
-    img {
-        left: 33%;
     }
     .login {
         padding: 0;
@@ -104,8 +93,5 @@ img {
 @media (min-width:768px) and (max-width: 1200px) {
     .login-box {
         width: 50vw;
-    }
-    img {
-        left: 40%;
     }
 }
