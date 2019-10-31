@@ -1,26 +1,31 @@
 body {
     margin: 0;
     padding: 0;
-    background-image: linear-gradient(to right,#008B45,#2E8B57,#43CD80,#90EE90);
-    position: relative;
+    background-image: linear-gradient(to left,#008B45,#2E8B57,#43CD80,#90EE90);
+}
+
+.container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .login-box {
+    position: relative;
     padding: 100px;
-    margin: 80px auto;
     background-color: #F8F8FF;
     width: 300px;
     height: 300px;
     border-radius: 20px;
 }
 
-h1 {
+.title {
     text-align: center;
     padding: 10px;
     margin: 0;
     font-family: 'Open Sans Condensed', sans-serif;
     letter-spacing: 5px;
-    font-variant: small-caps;
 }
 
 .login {
@@ -60,7 +65,7 @@ h1 {
 
 .login a {
     text-align: center;
-    margin: 5px;
+    margin: 2px;
     color: black;
     font-size: 18px;
     text-decoration: none;
@@ -73,7 +78,34 @@ h1 {
 
 img {
     position: absolute;
-    left: 45%;
+    left: 38%;
     top: 0;
     padding: 10px;
+}
+
+@media (max-width:400px){
+    .login-box {
+        width: 35vw;
+    }
+    img {
+        left: 33%;
+    }
+    .login {
+        padding: 0;
+    }
+    .login a {
+        margin: 0;
+        color: black;
+        font-size: 14px;
+        text-decoration: underline;
+    }
+}
+
+@media (min-width:768px) and (max-width: 1200px) {
+    .login-box {
+        width: 50vw;
+    }
+    img {
+        left: 40%;
+    }
 }
