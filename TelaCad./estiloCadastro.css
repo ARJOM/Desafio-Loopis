@@ -1,0 +1,73 @@
+body{
+    background-color: #F8F8FF;
+}
+
+.container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#cadastro{
+    display: flex;
+    justify-content: center;
+    align-items: center ;
+    flex-direction: column;
+    margin: 100px auto;
+    padding: 100px;
+    background-color: white;
+    width: 300px;
+    height: 300px;
+    border-radius: 20px;
+}
+
+#cadastro h2{
+    display: flex;
+    justify-content: center;
+    font-family: 'Open Sans Condensed', sans-serif;
+}
+
+.form-Cad {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-Cad p{
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 17px;
+}
+
+.sing-up{
+    border:none;
+    border-bottom: solid 1px #43CD80;
+}
+
+#btCad{
+    margin-top: 15px ;
+    text-align: center;
+}
+
+.btCadastro{
+    padding: 10px;
+    margin: 20px auto;
+    width: 120px;
+    border-radius: 15px;
+    background-image: linear-gradient(to right,#008B45,#2E8B57,#43CD80,#90EE90);
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    font-family: 'Open Sans Condensed', sans-serif;
+}
+
+@media (max-width:360px) {
+
+    #cadastro {
+        width: 35vw;
+    }
+    .form-Cad {
+        padding: 0;
+    }
+
+}
