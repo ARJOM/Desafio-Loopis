@@ -1,0 +1,64 @@
+body{
+    background-image: linear-gradient(to right,#008B45,#2E8B57,#43CD80,#90EE90);
+}
+
+#cadastro{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    padding: 100px;
+    margin: 100px auto;
+    background-color: white;
+    width: 300px;
+    height: 300px;
+    border: solid 2px #3CB371;
+    border-radius: 20px;
+}
+
+#cadastro h2{
+    display: flex;
+    justify-content: center;
+    font-family: 'Open Sans Condensed', sans-serif;
+}
+
+.form-Cad p{
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 17px;
+}
+
+.sing-up{
+    border:none;
+    border-bottom: solid 1px #BEBEBE;
+}
+
+#btCad{
+    margin-top: 15px ;
+    text-align: center;
+}
+
+.btCadastro{
+    padding: 10px;
+    margin: 20px auto;
+    width: 120px;
+    border-radius: 15px;
+    color: white;
+    background-color: #43CD80;
+    font-size: 16px;
+    font-weight: bold;
+    border: solid 1px #43CD80;
+    font-family: 'Open Sans Condensed', sans-serif;
+}
+
+.btCadastro:hover{
+    padding: 10px;
+    margin: 20px auto;
+    width: 120px;
+    border-radius: 15px;
+    color: white;
+    background-color: #3CB371;
+    font-size: 16px;
+    font-weight: bold;
+    border: solid 1px #3CB371;
+    font-family: 'Open Sans Condensed', sans-serif;
+}
