@@ -1,47 +1,53 @@
 body {
     margin: 0;
     padding: 0;
-    background-image: linear-gradient(to right,#008B45,#2E8B57,#43CD80,#90EE90);
-    position: relative;
+    background-color: #1C1C1C;
 }
 
-.login-box {
+.container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.box {
     padding: 100px;
-    margin: 80px auto;
-    background-color: #F8F8FF;
+    background-color: #f8f8ff;
     width: 300px;
     height: 300px;
     border-radius: 20px;
+    position: relative;
 }
 
-h1 {
+.title {
     text-align: center;
     padding: 10px;
     margin: 0;
     font-family: 'Open Sans Condensed', sans-serif;
     letter-spacing: 5px;
-    font-variant: small-caps;
 }
 
-.login {
+.form-log-cad {
     padding: 10px;
     margin: 0px;
     display: flex;
     flex-direction: column;
+    /*altereei*/
 }
 
-.login p {
+.form-log-cad p {
     font-family: 'Open Sans Condensed', sans-serif;
     font-size: 18px;
 }
 
-.sign-in {
+.sign {
     padding: 5px;
-    border-radius: 5px;
     border: none;
+    border-bottom: 1px solid #43CD80;
 }
 
-#submit {
+.submit {
     padding: 10px;
     margin: 20px auto;
     width: 100px;
@@ -52,28 +58,45 @@ h1 {
     font-weight: bold;
     border: none;
     font-family: 'Open Sans Condensed', sans-serif;
+    position: absolute;
+    bottom: 0;
+    left: 38%;
 }
 
-#submit:hover {
+.submit:hover {
     cursor: pointer;
 }
 
-.login a {
+.form-log-cad a {
     text-align: center;
-    margin: 5px;
-    color: black;
-    font-size: 18px;
+    margin-top: 5px;
+    padding-top: 5px;
+    color: #B5B5B5;
+    font-size: 14px;
     text-decoration: none;
     font-family: 'Open Sans Condensed', sans-serif;
 }
 
-.login a:hover {
+.form-log-cad a:hover {
     text-decoration: underline;
 }
 
-img {
-    position: absolute;
-    left: 45%;
-    top: 0;
-    padding: 10px;
+@media (max-width:400px){
+    .box {
+        width: 35vw;
+    }
+    .form-log-cad {
+        padding: 0;
+    }
+    .form-log-cad a {
+        margin: 0;
+        font-size: 14px;
+        text-decoration: underline;
+    }
+}
+
+@media (min-width:768px) and (max-width: 1200px) {
+    .box {
+        width: 50vw;
+    }
 }
