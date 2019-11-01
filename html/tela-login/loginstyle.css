@@ -1,0 +1,79 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-image: linear-gradient(to right,#008B45,#2E8B57,#43CD80,#90EE90);
+    position: relative;
+}
+
+.login-box {
+    padding: 100px;
+    margin: 80px auto;
+    background-color: #F8F8FF;
+    width: 300px;
+    height: 300px;
+    border-radius: 20px;
+}
+
+h1 {
+    text-align: center;
+    padding: 10px;
+    margin: 0;
+    font-family: 'Open Sans Condensed', sans-serif;
+    letter-spacing: 5px;
+    font-variant: small-caps;
+}
+
+.login {
+    padding: 10px;
+    margin: 0px;
+    display: flex;
+    flex-direction: column;
+}
+
+.login p {
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 18px;
+}
+
+.sign-in {
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+}
+
+#submit {
+    padding: 10px;
+    margin: 20px auto;
+    width: 100px;
+    border-radius: 15px;
+    background-image: linear-gradient(to right,#008B45,#2E8B57,#43CD80,#90EE90);
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    font-family: 'Open Sans Condensed', sans-serif;
+}
+
+#submit:hover {
+    cursor: pointer;
+}
+
+.login a {
+    text-align: center;
+    margin: 5px;
+    color: black;
+    font-size: 18px;
+    text-decoration: none;
+    font-family: 'Open Sans Condensed', sans-serif;
+}
+
+.login a:hover {
+    text-decoration: underline;
+}
+
+img {
+    position: absolute;
+    left: 45%;
+    top: 0;
+    padding: 10px;
+}
