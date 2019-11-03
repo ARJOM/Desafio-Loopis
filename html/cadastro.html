@@ -12,13 +12,15 @@
             <h2 class="title">CADASTRO</h2>
             <form class="form-log-cad">
                 <p>Nome Compelo</p>
-                <input type="text" name="" class="sing" size="45"  placeholder=" Insira seu nome completo">
+                <input type="text" id="nome" class="sing" size="45"  placeholder=" Insira seu nome completo">
                 <p>Email</p>
-                <input type="email" name="" class="sing" size="45"  placeholder="Insira seu email">
+                <input type="email" id="email" class="sing" size="45"  placeholder="Insira seu email">
                 <p>Senha</p>
-                <input type="password" name="" class="sing" size="45"  placeholder="No mímino 8 caracteres"> 
+                <input type="password" id="senha" class="sing" size="45"  placeholder="No mímino 8 caracteres"> 
+                <p>Confirmar Senha</p>
+                <input type="password" id="senhaconfirmar" class="sing" size="45"  placeholder="No mímino 8 caracteres"> 
             </form>  
-            <input class="submit" type="button" size="45" value="Cadastre-se">
+            <input class="submit" type="button" size="45" id="cadastrar" value="Cadastre-se">
         </div>
     </div>
     
@@ -31,6 +33,6 @@
     <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-database.js"></script> 
     <script src="../script/Firebase.js"></script>
-
+    <script src="../script/Users.js"></script>
 </body>
 </html>
