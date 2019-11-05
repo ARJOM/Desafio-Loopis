@@ -103,12 +103,16 @@ function preencheUpdate() {
 
     var main = document.getElementById("main");
 
-    var resultado = "";
+    var resultado = "<form>";
     resultado+="<h3>Email</h3><input id='novoEmail' type='email' value='"+email+"'>";
     resultado+="<h3>Nome</h3><input id='novoNome' type='text' value='"+nome+"'>";
-    resultado+="<h3>Senha Atual</h3><input id='antigaSenha' type='password'>"
+    resultado+="<h3>Nova Senha</h3><input id='novaSenha' type='password'>"
+    resultado+="<h3>Senha Atual</h3><input id='confirmaSenha' type='password'>"
+    resultado+="<h3>Senha Atual</h3><input id='atualSenha' type='password'>"
 
     resultado+="<div class='submit'><a id='update'>Atualizar</a></div>";
+
+    resultado+="</form>"
 
     main.innerHTML = resultado;
 }
