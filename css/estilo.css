@@ -14,10 +14,18 @@ body {
 .box {
     padding: 100px;
     background-color: #f8f8ff;
-    width: 400px;
-    height: 400px;
     border-radius: 20px;
     position: relative;
+}
+
+#cadastro {
+    width: 300px;
+    height: 400px;
+}
+
+#login {
+    width: 250px;
+    height: 300px;
 }
 
 .title {
@@ -26,14 +34,14 @@ body {
     margin: 0;
     font-family: 'Open Sans Condensed', sans-serif;
     letter-spacing: 5px;
+    text-transform: uppercase;
 }
 
 .form-log-cad {
-    padding: 10px;
     margin: 0px;
     display: flex;
     flex-direction: column;
-    /*altereei*/
+    margin-bottom: 30px;
 }
 
 .form-log-cad p {
@@ -52,17 +60,18 @@ body {
     margin: 20px auto;
     width: 100px;
     border-radius: 15px;
-    background-image: linear-gradient(to right,#008B45,#2E8B57,#43CD80,#90EE90);
+    background-color: #008B45;
+    border: none;
+    text-align: center;
+}
+.submit a {
     color: white;
     font-size: 16px;
     font-weight: bold;
-    border: none;
     font-family: 'Open Sans Condensed', sans-serif;
-    position: absolute;
-    bottom: 0;
-    left: 38%;
+    text-decoration: none;
+    text-transform: uppercase;
 }
-
 .submit:hover {
     cursor: pointer;
 }
@@ -81,6 +90,7 @@ body {
     text-decoration: underline;
 }
 
+/* fazer modificações aqui! responsividade não ta legal */
 @media (max-width:400px){
     .box {
         width: 35vw;
