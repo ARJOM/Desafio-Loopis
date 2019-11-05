@@ -9,7 +9,7 @@ var y = false;
 
 //butões
 var Cadastrar = document.getElementById("cadastrar");
-var Login = document.getElementById("login");
+var Login = document.getElementById("logar");
 
 
 //Criar conta de Email e Senha
