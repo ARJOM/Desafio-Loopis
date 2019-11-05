@@ -37,7 +37,7 @@ Cadastrar.addEventListener('click', function () {
         Email.value="";
         Senha.value="";
         ConfirmacaodeSenha.value="";
-        window.location.reload();
+        window.location.href = "../index.html";
     
     })
     .catch(function (error) {
