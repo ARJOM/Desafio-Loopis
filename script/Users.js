@@ -68,12 +68,12 @@ if(Login!=null){
         .auth()
         .signInWithEmailAndPassword(Email.value, Senha.value)
         .then(function(result) {
-            console.log(result)
+            console.log(result);
             alert("Logado na conta " + Email.value);
             Email.value='';
             Senha.value='';
             setTimeout(function() {
-                window.location.href = "../index.html";
+                window.location.href = "index.html";
             }, 1000);
              
         
@@ -88,4 +88,27 @@ if(Login!=null){
     });
     
     
+}
+
+
+// Preenche tela de update
+function preencheUpdate() {
+    var user = firebase.auth().currentUser;
+    if (user != null) {
+        user.providerData.forEach(function (profile) {
+          nome = profile.displayName;
+          email = profile.email;
+        });
+      }
+
+    var main = document.getElementById("main");
+
+    var resultado = "";
+    resultado+="<h3>Email</h3><input id='novoEmail' type='email' value='"+email+"'>";
+    resultado+="<h3>Nome</h3><input id='novoNome' type='text' value='"+nome+"'>";
+    resultado+="<h3>Senha Atual</h3><input id='antigaSenha' type='password'>"
+
+    resultado+="<div class='submit'><a id='update'>Atualizar</a></div>";
+
+    main.innerHTML = resultado;
 }
