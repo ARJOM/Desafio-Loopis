@@ -145,3 +145,15 @@ function updateUser() {
 
     preencheUpdate();
 }
+
+function deleteUser() {
+    var user = firebase.auth().currentUser;
+
+    user.delete().then(function() {
+        window.alert("Usuário removido com sucesso!")
+        window.location.href = 'login.html'
+    }).catch(function(error) {
+        window.alert("Não foi possível remover a sua conta!,0 ")
+    });
+
+}
