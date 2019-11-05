@@ -9,6 +9,7 @@ var y = false;
 
 //butões
 var Cadastrar = document.getElementById("cadastrar");
+var Login = document.getElementById("login");
 
 
 //Criar conta de Email e Senha
@@ -57,3 +58,34 @@ Cadastrar.addEventListener('click', function () {
 
 
 
+
+//Autenticar com E-mail e Senha
+if(Login!=null){
+
+    Login.addEventListener('click', function () {
+        
+        firebase
+        .auth()
+        .signInWithEmailAndPassword(Email.value, Senha.value)
+        .then(function(result) {
+            console.log(result)
+            alert("Logado na conta " + Email.value);
+            Email.value='';
+            Senha.value='';
+            setTimeout(function() {
+                window.location.href = "../index.html";
+            }, 1000);
+             
+        
+        })
+        .catch(function (error) {
+            console.error(error.code);
+            console.error(error.message);
+            alert("Falha ao logar. O email não existe ou a senha foi digitada errada!");
+    });
+    
+    
+    });
+    
+    
+}
