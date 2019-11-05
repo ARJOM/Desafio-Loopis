@@ -60,3 +60,55 @@ header {
     list-style: none;      
 }
 
+/* Estilizando filtagrem de espaços */
+
+.buscar {
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+}
+p {
+    font-family: 'Open Sans Condensed', sans-serif;
+    margin: 0 0 5px 0;
+    padding: 0;
+}
+.reserva {
+    display: flex;
+    justify-content: space-around;
+    margin: 0 10px;
+}
+.content {
+    margin: 0 15px;
+}
+#btn {
+    border: none;
+    background-color: #008B45;
+    color: white;
+    border-radius: 5px;
+    font-size: 14px;
+    width: 100px;
+    text-transform: uppercase;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-weight: bold;
+}
+
+#btn:hover {
+    cursor: pointer;
+}
+
+@media screen and (max-width:400px) {
+    .buscar {
+        flex-wrap: wrap;
+    }
+    .reserva {
+        flex-wrap: wrap;
+        margin: 10px auto;
+        justify-content: flex-start;
+    }
+    .content {
+        margin: 0;
+    }
+    #btn {
+        margin-top: 5px;
+    }
+}
