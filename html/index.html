@@ -19,7 +19,7 @@
                     <li><a onclick="preencheUpdate()" href="#">Minha Conta</a></li>
                     <li><a href="#">Minhas Reservas</a></li>
                     <li><a href="#">História das Reservas</a></li>
-                    <li><a href="#">Nova Reservas</a></li>
+                    <li><a onclick="preencheEspacos()" href="#">Nova Reservas</a></li>
                        <ul>
                            <li><a href="#">Salas</a></li>
                            <li><a href="#">Laboratórios</a></li>
@@ -29,23 +29,6 @@
             </div>
         </section>
         <section id="main" class="right">
-            <div class="buscar">
-                <form class="reserva">
-                    <div class="content">
-                        <p class="text">Data da reserva: </p>
-                        <input type="date">
-                    </div>
-                    <div class="content">
-                        <p class="text">Horário de início: </p>
-                        <input type="time" id="hora-inicio" min="07:00" max="22:00" required>
-                    </div>
-                    <div class="content">
-                        <p class="text">Horário de entrega: </p>
-                        <input type="time" id="hora-entrega" min="07:00" max="22:00" required>
-                    </div>
-                </form>
-                <input type="submit" value="filtrar" id="btn">
-            </div>
         </section>
     </div>
 
@@ -60,5 +43,6 @@
     <script src="../script/Firebase.js"></script>
     <script src="../script/Users.js"></script>
     <script src="../script/UpadteUser.js"></script>
+    <script src="../script/Espacos.js"></script>
 </body>
 </html>
