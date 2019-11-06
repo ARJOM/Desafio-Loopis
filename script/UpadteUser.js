@@ -1,10 +1,12 @@
 // Preenche tela de update
 function preencheUpdate() {
     var user = firebase.auth().currentUser;
-    var nome, email;
+    let nome;
+    var email;
+    
+    // Definindo o email do usuário logado
     if (user != null) {
         user.providerData.forEach(function (profile) {
-            nome = profile.displayName;
             email = profile.email;
         });
     }
@@ -13,7 +15,7 @@ function preencheUpdate() {
 
     var resultado = "<form>";
     resultado+="<h3>Email</h3><input id='novoEmail' type='email' value='"+email+"'>";
-    resultado+="<h3>Nome</h3><input id='novoNome' type='text' value='"+nome+"'>";
+    resultado+="<h3>Nome</h3><input id='novoNome' type='text'>";
     resultado+="<h3>Nova Senha</h3><input id='novaSenha' type='password'>";
     resultado+="<h3>Confirmar Nova Senha</h3><input id='confirmaSenha' type='password'>";
     resultado+="<h3>Senha Atual</h3><input id='atualSenha' type='password'>";
@@ -25,76 +27,116 @@ function preencheUpdate() {
 
     main.innerHTML = resultado;
 
-    insereEnventoUpdate();
-    insereEnventoDelete();
+    // Adicionando o nome do usuário logado ao valor do campo correspondente ao novo nome
+    firebase.database().ref('Usuários').on('value', function (snapshot){
+        snapshot.forEach(function (item) {
+            if (email === item.val().Email){
+                nome = item.val().Nome;
+                document.getElementById("novoNome").value = nome;
+            }
+        });
+    });
+
+    insereEventoUpdate();
+    insereEventoDelete();
 }
-//
-// // Update usuário
-// function insereEventoUpdate(){
-//     var Update = document.getElementById("update");
-//     var novaSenha = document.getElementById("novaSenha");
-//     var confirmaSenha = document.getElementById("confirmaSenha");
-//     Update.addEventListener('click', function () {
-//         if (novaSenha.value===confirmaSenha.value) {
-//             email = emailLogado();
-//             if ()
-//         } else{
-//             alert("Senhas imcompativeis!");
-//         }
-//     });
-// }
-// function updateUser() {
-//     var user = firebase.auth().currentUser;
-//     var nome, email, emailVerificado;
-//     if (user != null) {
-//         user.providerData.forEach(function (profile) {
-//             nome = profile.displayName;
-//             email = profile.email;
-//             console.log(profile.emailVerified);
-//         });
-//     }
-//
-//     var main = document.getElementById("main");
-//
-//     // user.updateProfile({
-//     //     Nome: nome,
-//     // }).then(function() {
-//     //     // Update successful.
-//     // }).catch(function(error) {
-//     //     window.alert("Nome não pôde ser atualizado")
-//     // });
-//
-//     user.updateEmail(email).then(function() {
-//         // Update successful.
-//         window.alert("Email atualizado")
-//     }).catch(function(error) {
-//         window.alert("Email não pôde ser autualizado")
-//     });
-//
-//     // preencheUpdate();
-// }
-//
-// function deleteUser() {
-//     var user = firebase.auth().currentUser;
-//
-//     user.delete().then(function() {
-//         window.alert("Usuário removido com sucesso!")
-//         window.location.href = 'login.html'
-//     }).catch(function(error) {
-//         window.alert("Não foi possível remover a sua conta!")
-//     });
-//
-// }
-//
-// // Funções auxiliares
-// function emailLogado() {
-//     var user = firebase.auth().currentUser;
-//     var email;
-//     if (user != null) {
-//         user.providerData.forEach(function (profile) {
-//             email = profile.email;
-//         });
-//         return email;
-//     }
-//     return null;
-// }
+
+// Update usuário
+function insereEventoUpdate(){
+    var Update = document.getElementById("update");
+    var novaSenha = document.getElementById("novaSenha");
+    var confirmaSenha = document.getElementById("confirmaSenha");
+    var novoEmail = document.getElementById("novoEmail");
+    var novoNome = document.getElementById("novoNome")
+    Update.addEventListener('click', function () {
+        if (novaSenha.value===confirmaSenha.value) {
+            var email = emailLogado();
+            firebase.database().ref('Usuários').on('value', function (snapshot){
+                snapshot.forEach(function (item) {
+                    if (email === item.val().Email) {
+                        if (email !== item.val().Email){
+                            user.updateEmail(email).then(function () {
+                                // Update successful.
+                            }).catch(function (error) {
+                                window.alert("Email não pôde ser autualizado")
+                            });
+                        }
+                        if (item.val().Nome !== novoNome) {
+                            item.val().Nome = novoNome;
+                            item.val().update();
+                        }
+                        if (novaSenha !== "") {
+                            user.updatePassword(novaSenha).then(function () {
+                                // Update successful.
+                            }).catch(function (error) {
+                                window.alert("Não foi possível atualizar a sua senha!")
+                            });
+                        }
+                    }
+                });
+            });
+
+            user.Email = document.getElementById("novoEmail").value;
+            user.Nome = document.getElementById("novoNome").value;
+
+        } else{
+            alert("Senhas imcompativeis!");
+        }
+    });
+}
+
+function updateUser() {
+    var user = firebase.auth().currentUser;
+    var nome, email, emailVerificado;
+    if (user != null) {
+        user.providerData.forEach(function (profile) {
+            email = profile.email;
+        });
+    }
+
+    var main = document.getElementById("main");
+
+    // user.updateProfile({
+    //     Nome: nome,
+    // }).then(function() {
+    //     // Update successful.
+    // }).catch(function(error) {
+    //     window.alert("Nome não pôde ser atualizado")
+    // });
+
+
+
+    // preencheUpdate();
+}
+
+function deleteUser() {
+    var user = firebase.auth().currentUser;
+
+    user.delete().then(function() {
+        window.alert("Usuário removido com sucesso!")
+        window.location.href = 'login.html'
+    }).catch(function(error) {
+        window.alert("Não foi possível remover a sua conta!")
+    });
+
+}
+
+// Funções auxiliares
+
+function emailLogado() {
+    var user = firebase.auth().currentUser;
+    var email;
+    if (user != null) {
+        user.providerData.forEach(function (profile) {
+            email = profile.email;
+            return email;
+        });
+    }
+    return null;
+}
+
+function atualizaEmail(email) {
+    var user = firebase.auth().currentUser;
+
+
+}
