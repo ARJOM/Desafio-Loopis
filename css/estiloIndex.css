@@ -11,6 +11,10 @@ body {
     grid-template-rows: 15vh 85vh;
     grid-template-areas: "header header" "left right";
 }
+.espaco{
+    background-color: darkgray;
+    margin-top: 20px;
+}
 
 header {
     grid-area: header;

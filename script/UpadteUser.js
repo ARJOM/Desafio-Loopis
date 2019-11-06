@@ -3,7 +3,7 @@ function preencheUpdate() {
     var user = firebase.auth().currentUser;
     let nome;
     var email;
-    
+
     // Definindo o email do usuário logado
     if (user != null) {
         user.providerData.forEach(function (profile) {
