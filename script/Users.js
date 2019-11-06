@@ -21,6 +21,7 @@ if(Cadastrar!=null){
                 Nome : Nome.value,
                 Email : Email.value,
                 Moderador: y,
+                Administrador: y,
                 Ativo: y,
               };
         firebase
