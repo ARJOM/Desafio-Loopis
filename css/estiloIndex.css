@@ -11,9 +11,11 @@ body {
     grid-template-rows: 15vh 85vh;
     grid-template-areas: "header header" "left right";
 }
-.espaco{
-    background-color: darkgray;
-    margin-top: 20px;
+
+
+aligin
+.textocentralizado{
+    text-align: center;;
 }
 
 header {
@@ -94,6 +96,9 @@ p {
     text-transform: uppercase;
     font-family: 'Open Sans Condensed', sans-serif;
     font-weight: bold;
+    margin-top: 20px;
+    border-left-width: medium;
+    margin-left: 20px;
 }
 
 #btn:hover {
