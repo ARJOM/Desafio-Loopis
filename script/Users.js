@@ -22,7 +22,7 @@ if(Cadastrar!=null){
                 Email : Email.value,
                 Moderador: y,
                 Administrador: y,
-                Ativo: y,
+                Ativo: x,
               };
         firebase
         .auth()
