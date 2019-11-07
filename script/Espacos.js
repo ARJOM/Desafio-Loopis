@@ -34,24 +34,22 @@ var valorTipo = document.getElementById("ListadeTipodeEspaco");
 
 //botões
 //var RegistrarEspacos = document.getElementsByName("RegistrarEspaco");
-var valordoespaço = 1;
-
+ 
 
 function RegistrarTiposdeEspacos(){
+ 
 
-  alert(TipoEspaco.value);
+
     var TiposdeEspaco = {
-        valor : valordoespaço,
+        
         TipoEspaco: TipoEspaco.value,
     };
 
 
 let db = firebase.database().ref().child("Tipos de Espaco").push(TiposdeEspaco);
 db.set(TiposdeEspaco);
-alert("Tipo de Espaço Adcionado com sucesso")
-   
-abrir();
-  
+alert("Tipo de Espaço Adcionado com sucesso");
+
 }
 
 function abrir(){
