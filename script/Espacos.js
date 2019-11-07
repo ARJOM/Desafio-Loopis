@@ -37,8 +37,6 @@ var valorTipo = document.getElementById("ListadeTipodeEspaco");
  
 
 function RegistrarTiposdeEspacos(){
- 
-
 
     var TiposdeEspaco = {
         
@@ -57,6 +55,8 @@ function abrir(){
         snapshot.forEach(function (item){ 
         var Option = document.createElement("option");
         Option.innerHTML = item.val().TipoEspaco;
+        Option.setAttribute("value", Object.keys(snapshot.val())[0]);
+        console.log("volta"+ item.val().TipoEspaco)
         document.getElementById("ListadeTipodeEspaco").appendChild(Option);
         })})          
     }
@@ -71,8 +71,11 @@ function RegistrarEspacos(){
         Local: Local.value,
         Capacidade: Capacidade.value,
     };
-
-let db = firebase.database().ref().child("Espaco").push(Espaco);
-db.set(Espaco);
-alert("Tipo de Espaço Adcionado com sucesso")
+    if (NomedoEspaco.value !== "") {
+        let db = firebase.database().ref().child("Espaco").push(Espaco);
+        db.set(Espaco);
+        alert("Tipo de Espaço Adcionado com sucesso")
+    } else{
+        alert("Tipo de Espaço NÂO Adicionado")
+    }
 }
