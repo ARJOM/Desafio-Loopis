@@ -32,6 +32,10 @@ var Local = document.getElementById("local");
 var Capacidade = document.getElementById("capacidade");
 var valorTipo = document.getElementById("ListadeTipodeEspaco");
 
+let tipos = [];
+getTipos(tipos);
+
+
 //botões
 //var RegistrarEspacos = document.getElementsByName("RegistrarEspaco");
  
@@ -43,23 +47,37 @@ function RegistrarTiposdeEspacos(){
         TipoEspaco: TipoEspaco.value,
     };
 
+    var existe = false;
 
-let db = firebase.database().ref().child("Tipos de Espaco").push(TiposdeEspaco);
-db.set(TiposdeEspaco);
-alert("Tipo de Espaço Adcionado com sucesso");
-
+    if(TipoEspaco.value !== "") {
+        for (var i=0; i<tipos.length; i++){
+            if (tipos[i]===TiposdeEspaco.TipoEspaco){
+                existe = true;
+            }
+        }
+        if (!existe) {
+            let db = firebase.database().ref().child("TiposdeEspaco").push(TiposdeEspaco);
+            db.set(TiposdeEspaco);
+            alert("Tipo de Espaço Adcionado com sucesso");
+            getTipos();
+        }else {
+            alert("Já existe um tipo de espaço cadastrado com esse nome");
+        }
+    } else{
+        alert("Tipo de Espaço NÂO Adicionado!")
+    }
 }
 
 function abrir(){
-    firebase.database().ref('Tipos de Espaco').on('value', function (snapshot){
+    firebase.database().ref('TiposdeEspaco').on('value', function (snapshot){
         snapshot.forEach(function (item){ 
         var Option = document.createElement("option");
         Option.innerHTML = item.val().TipoEspaco;
         Option.setAttribute("value", Object.keys(snapshot.val())[0]);
-        console.log("volta"+ item.val().TipoEspaco)
         document.getElementById("ListadeTipodeEspaco").appendChild(Option);
-        })})          
-    }
+        })
+    })
+}
     
 
   
@@ -78,4 +96,12 @@ function RegistrarEspacos(){
     } else{
         alert("Tipo de Espaço NÂO Adicionado")
     }
+}
+
+function getTipos(tipos) {
+    firebase.database().ref('TiposdeEspaco').on('value', function (snapshot){
+        snapshot.forEach(function (item){
+            tipos.push(item.val().TipoEspaco);
+        });
+    });
 }
