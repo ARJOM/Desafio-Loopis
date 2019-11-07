@@ -28,7 +28,7 @@ if(Cadastrar!=null){
         .auth()
         .createUserWithEmailAndPassword(Email.value, Senha.value)
         .then(function() {
-            let db = firebase.database().ref().child('Usuários').push(Users);
+            let db = firebase.database().ref().child('Usuarios').push(Users);
             db.set(Users);
         alert(Email.value + " - Conta cadastrada com sucesso!");
         Nome.value="";

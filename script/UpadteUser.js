@@ -6,9 +6,7 @@ function preencheUpdate() {
 
     // Definindo o email do usuário logado
     if (user != null) {
-        user.providerData.forEach(function (profile) {
-            email = profile.email;
-        });
+        email = user.email;
     }
 
     var main = document.getElementById("main");
@@ -28,7 +26,7 @@ function preencheUpdate() {
     main.innerHTML = resultado;
 
     // Adicionando o nome do usuário logado ao valor do campo correspondente ao novo nome
-    firebase.database().ref('Usuários').on('value', function (snapshot){
+    firebase.database().ref('Usuarios').on('value', function (snapshot){
         snapshot.forEach(function (item) {
             if (email === item.val().Email){
                 nome = item.val().Nome;
@@ -38,19 +36,17 @@ function preencheUpdate() {
     });
 
     insereEventoUpdate();
-    insereEventoDelete();
+    //insereEventoDelete();
 }
 
 // Update usuário
 function insereEventoUpdate(){
 
-    var user = firebase.auth().currentUser;
-
     var Update = document.getElementById("update");
     var novaSenha = document.getElementById("novaSenha");
     var confirmaSenha = document.getElementById("confirmaSenha");
     var novoEmail = document.getElementById("novoEmail");
-    var novoNome = document.getElementById("novoNome");
+
 
     Update.addEventListener('click', function () {
         if (novaSenha.value===confirmaSenha.value) {
@@ -62,7 +58,7 @@ function insereEventoUpdate(){
                 email = user.email;
             }
             console.log(email);
-            firebase.database().ref('Usuários').on('value', function (snapshot){
+            firebase.database().ref('Usuarios').on('value', function (snapshot){
                 snapshot.forEach(function (item) {
                     var key = Object.keys(snapshot.val())[0];
                     if (email === item.val().Email) {
@@ -75,8 +71,9 @@ function insereEventoUpdate(){
                         //     });
                         // }
                         if (item.val().Nome !== novoNome) {
-                            firebase.database().ref('Usuários/'+key).update({
-                                Nome: novoNome
+                            console.log(novoNome);
+                            firebase.database().ref('/Usuarios/'+key).update({
+                                Nome: document.getElementById("novoNome").value
                             });
                             console.log("funcionou")
                         }
