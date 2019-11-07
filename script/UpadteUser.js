@@ -9,18 +9,21 @@ function preencheUpdate() {
     }
 
     var main = document.getElementById("main");
+    
+    var resultado = "<div class='update'>";
+    resultado+="<h2>alterar cadastro</h2>";
+    resultado+= "<form>";
+    resultado+="<div class='update-content' id='email'><h3>Email</h3><input id='novoEmail' type='email' value='"+email+"'></div>";
+    resultado+="<div class='update-content' id='nome'><h3>Nome</h3><input id='novoNome' type='text'></div>";
+    resultado+="<div class='update-content' id='newSenha'><h3>Nova Senha</h3><input id='novaSenha' type='password'></div>";
+    resultado+="<div class='update-content' id='confirm'><h3>Confirmar Nova Senha</h3><input id='confirmaSenha' type='password'></div>";
+    resultado+="<div class='update-content' id='SenhaAtual'><h3>Senha Atual</h3><input id='atualSenha' type='password'></div>";
 
-    var resultado = "<form>";
-    resultado+="<h3>Email</h3><input id='novoEmail' type='email' value='"+email+"'>";
-    resultado+="<h3>Nome</h3><input id='novoNome' type='text'>";
-    resultado+="<h3>Nova Senha</h3><input id='novaSenha' type='password'>";
-    resultado+="<h3>Confirmar Nova Senha</h3><input id='confirmaSenha' type='password'>";
-    resultado+="<h3>Senha Atual</h3><input id='atualSenha' type='password'>";
-
-    resultado+="<div class='submit'><a id='update'>Atualizar</a></div>";
-    resultado+="<div class='delete'><a id='delete'>Remover</a></div>";
+    resultado+="<div class='submit'><a id='update'>salvar alterações</a></div>";
+    resultado+="<div class='delete'><a id='delete'>excluir conta</a></div>";
 
     resultado+="</form>";
+    resultado+="</div>";
 
     main.innerHTML = resultado;
 

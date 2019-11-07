@@ -121,3 +121,94 @@ p {
         margin-top: 5px;
     }
 }
+/* Estilizando tela de atualização de usuário */
+
+.update h2 {
+    text-align: center;
+    text-transform: uppercase;
+    font-family: 'Open Sans Condensed', sans-serif;
+    letter-spacing: 3px;
+}
+
+.update form {
+    display: grid;
+    grid-template-columns: 200px 200px;
+    grid-template-rows: 100px 100px 100px 30px;
+    grid-template-areas: "email email" "nome atual" "nova confirmar" "remover atualizar";
+    justify-content: space-evenly;
+    margin-top: 40px;
+    grid-column-gap: 15px;
+    grid-row-gap: 25px;
+}
+
+#email {
+    grid-area: email;
+}
+
+#nome {
+    grid-area: nome;
+}
+
+#newSenha {
+    grid-area: nova;
+}
+
+#confirm {
+    grid-area: confirmar;
+}
+
+#SenhaAtual {
+    grid-area: atual;
+}
+
+.update .submit {
+    grid-area: atualizar;
+    border: 1px solid #008B45;
+    background-color: #008B45;
+    text-align: center;
+    border-radius: 3px;
+}
+
+.update .delete {
+    grid-area: remover;
+    border: 1px solid #EE2C2C;
+    background-color: #EE2C2C;
+    text-align: center;
+    border-radius: 3px;
+}
+
+.update-content input {
+    padding: 5px;
+    width: 300px;
+    border: none;
+    border-bottom: 1px solid #008B45;
+}
+
+.update-content h3 {
+    text-transform: uppercase;
+    font-family: 'Open Sans Condensed', sans-serif;
+}
+
+#novoEmail {
+   width: 700px;
+}
+
+.submit, .delete a {
+    color: white;
+    text-transform: uppercase;
+    font-family: 'Open Sans Condensed', sans-serif;
+}
+
+.submit , .delete:hover {
+    cursor: pointer;
+}
+
+@media screen and (max-width:400px) {
+    .update form {
+        grid-template-columns: 200px;
+        grid-template-rows: 100px 100px 100px 100px 100px 30px 30px;
+        grid-template-areas: "email" "nome" "atual" "nova" "confirmar" "remover" "atualizar";
+        justify-content: center;
+        grid-row-gap: 5px;
+    }
+}
