@@ -75,14 +75,10 @@ async function insereEventoUpdate(){
                             alert("Nome atualizado")
                         }
 
-                        // Atualiza senha
-                        // if (novaSenha !== "") {
-                        //     user.updatePassword(novaSenha).then(function () {
-                        //         // Update successful.
-                        //     }).catch(function (error) {
-                        //         window.alert("Não foi possível atualizar a sua senha!")
-                        //     });
-                        // }
+                        //Atualiza senha
+                        if (novaSenha !== "") {
+                            atualizaSenha();
+                        }
                     }
                 });
             });
@@ -149,6 +145,17 @@ function atualizaEmail(key) {
         console.log("Email atualizado");
     }).catch(function (error) {
         console.log("Email não pôde ser autualizado"+error);
+    });
+
+}
+
+function atualizaSenha() {
+    var novaSenha = document.getElementById("novaSenha").value;
+    var user = firebase.auth().currentUser;
+    user.updatePassword(novaSenha).then(function () {
+        alert("Deu certo!")
+    }).catch(function (error) {
+        window.alert("Não foi possível atualizar a sua senha!")
     });
 
 }
