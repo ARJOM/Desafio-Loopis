@@ -1,7 +1,6 @@
 // Preenche tela de update
 function preencheUpdate() {
     var user = firebase.auth().currentUser;
-    let nome;
     var email;
 
     // Definindo o email do usuário logado
@@ -69,6 +68,7 @@ function insereEventoUpdate(){
                         if ( novoEmail !== item.val().Email){
 
                             //Atualizando email na autenticação
+                            var user = firebase.auth().currentUser;
                             user.updateEmail(novoEmail.toString()).then(function () {
                                 //Atualizando email no banco de dados
                                 firebase.database().ref('/Usuarios/'+key).update({
@@ -78,7 +78,7 @@ function insereEventoUpdate(){
                                 }).catch(function (error) {
                                     console.log("Email não pôde ser autualizado")
                                 });
-                            
+
                             console.log(item.val().Email);
                         }
 
