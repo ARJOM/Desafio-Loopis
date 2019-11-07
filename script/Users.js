@@ -107,6 +107,9 @@ function sair(){
   
     firebase.auth().signOut().then(function() {
     console.log('Logout');
+    setTimeout(function() {
+        window.location.href = "login.html";
+    }, 1000);
     
   }, function(error) {
     console.error( error );
