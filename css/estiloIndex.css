@@ -36,14 +36,17 @@ header {
     background: #FFFAF0;
 }
 
-.menu-header ul{
+.link-header{
     display: flex;
-    flex-direction: row;
     justify-content: flex-end;
+    margin: 35px;
+    margin-top: 55px;
+    font-family: 'Open Sans Condensed', sans-serif;
 }
 
-.menu-header li{
-    margin: 40px;
+.logout{
+    width: 20px;
+    margin: 3px;
 }
 
 .menu-left li{
@@ -51,18 +54,18 @@ header {
     font-family: 'Open Sans Condensed', sans-serif;
 }
 
-.menu-left a:link{
-        text-decoration: none;
-        color: white;
-        text-transform: uppercase;
-}
-
-.menu-left a:visited{
+.menu-left a:link, .link-header:link{
+    text-decoration: none;
     color: white;
     text-transform: uppercase;
 }
 
-.menu-left ul{
+.menu-left a:visited, .link-header:visited{
+    color: white;
+    text-transform: uppercase;
+}
+
+.menu-left ul, .link-header{
     list-style: none;      
 }
 
