@@ -28,9 +28,9 @@ function preencheUpdate() {
     // Adicionando o nome do usuário logado ao valor do campo correspondente ao novo nome
     firebase.database().ref('Usuarios').on('value', function (snapshot){
         snapshot.forEach(function (item) {
+            console.log(item.val().Nome);
             if (email === item.val().Email){
-                nome = item.val().Nome;
-                document.getElementById("novoNome").value = nome;
+                document.getElementById("novoNome").value = item.val().Nome;
             }
         });
     });
@@ -45,7 +45,6 @@ function insereEventoUpdate(){
     var Update = document.getElementById("update");
     var novaSenha = document.getElementById("novaSenha");
     var confirmaSenha = document.getElementById("confirmaSenha");
-    var novoEmail = document.getElementById("novoEmail");
 
 
     Update.addEventListener('click', function () {
@@ -57,23 +56,36 @@ function insereEventoUpdate(){
             if (user != null) {
                 email = user.email;
             }
-            console.log(email);
+
             firebase.database().ref('Usuarios').on('value', function (snapshot){
                 snapshot.forEach(function (item) {
-                    var key = Object.keys(snapshot.val())[0];
                     if (email === item.val().Email) {
-                        console.log(key);
-                        // if (novoEmail !== item.val().Email){
-                        //     user.updateEmail(novoEmail).then(function () {
-                        //
-                        //     }).catch(function (error) {
-                        //         window.alert("Email não pôde ser autualizado")
-                        //     });
-                        // }
-                        if (item.val().Nome !== novoNome) {
-                            console.log(novoNome);
+
+                        //Definição das variáveis a serem utilizadas
+                        var key = Object.keys(snapshot.val())[0];
+                        var novoEmail = document.getElementById("novoEmail").value;
+                        var novoNome = document.getElementById("novoNome").value;
+
+                        if ( novoEmail !== item.val().Email){
+
+                            //Atualizando email na autenticação
+                            user.updateEmail(novoEmail.toString()).then(function () {
+                                //Atualizando email no banco de dados
+                                firebase.database().ref('/Usuarios/'+key).update({
+                                    Email: novoEmail
+                                });
+                                console.log("Email atualizado");
+                                }).catch(function (error) {
+                                    console.log("Email não pôde ser autualizado")
+                                });
+                            
+                            console.log(item.val().Email);
+                        }
+
+                        //Atualizando nome no banco de dados
+                        if (item.val().Nome !== novoNome && novoNome !== "") {
                             firebase.database().ref('/Usuarios/'+key).update({
-                                Nome: document.getElementById("novoNome").value
+                                Nome: novoNome
                             });
                             console.log("funcionou")
                         }
