@@ -11,7 +11,7 @@ function preencheCadastroTipo() {
     resultado += "<input id='tipoespaco'></br>";
 
     resultado += "<button value='' id='btn' onclick='RegistrarTiposdeEspacos()'>Registrar Tipo de Espaço</button>";
-    resultado += "<a href='CadastrodeEspaço.html' id='btn' >Cadastro de Espaço</a>";
+    resultado += "<a href='#' onclick='preencheCadastroEspaco()' id='btn' >Cadastro de Espaço</a>";
     resultado += "</div>";
 
     main.innerHTML = resultado;
@@ -39,7 +39,7 @@ function preencheCadastroEspaco(){
 
     resultado += "</form><br/>";
     resultado += "<button id='btn' name='RegistrarEspaco' onclick='RegistrarEspacos()'>Registrar Espaço</button>";
-    resultado += "<a href='CadastroTipodeEspaco.html' id='btn' >Cadastro de Tipo de Espaço</a>";
+    resultado += "<a href='#' onclick='preencheCadastroTipo()' id='btn' >Cadastro de Tipo de Espaço</a>";
     resultado += "</div>";
     resultado += "</div>";
 
