@@ -6,17 +6,25 @@ firebase.auth().onAuthStateChanged(function(user) {
       
     var menu = document.getElementById("menu");
     
-    var resultado = "<div class='menu-left' ><ul>";
-    resultado+="<li><a href='index.html'>Página Inicial</a></li>"
-    resultado+="<li><a onclick='preencheUpdate()' href='#'>Minha Conta</a></li>";
-    resultado+="<li><a href=''>Minhas Reservas</a></li>"
-    resultado+="<li><a href=''>História das Reservas</a></li>";
-    resultado+="<li ><a  onclick='sair()' href='' >Sair</a></li>";
+    var opcaomenu = "<div class='menu-left' ><ul>";
+    opcaomenu+="<li><a href='index.html'>Página Inicial</a></li>"
+    opcaomenu+="<li><a onclick='preencheUpdate()' href='#'>Minha Conta</a></li>";
+    opcaomenu+="<li><a href=''>Minhas Reservas</a></li>"
+    opcaomenu+="<li><a href=''>História das Reservas</a></li>";
+    opcaomenu+="<li ><a  onclick='sair()' href='' >Sair</a></li>";
 
-    resultado+="</ul>";
-    resultado+="</div>";
+    opcaomenu+="</ul>";
+    opcaomenu+="</div>";
 
-    menu.innerHTML = resultado;
+    menu.innerHTML = opcaomenu;
+
+    var sair = document.getElementById("sair");
+    
+    var funcaosair = "<a href='' class='link-header' onclick='sair()'><img src='../images/logout.png' class='logout'>Sair</a>";
+    
+    sair.innerHTML = funcaosair;
+
+    
 
     
     /*
