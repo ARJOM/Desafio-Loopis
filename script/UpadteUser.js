@@ -43,35 +43,52 @@ function preencheUpdate() {
 
 // Update usuário
 function insereEventoUpdate(){
+
+    var user = firebase.auth().currentUser;
+
     var Update = document.getElementById("update");
     var novaSenha = document.getElementById("novaSenha");
     var confirmaSenha = document.getElementById("confirmaSenha");
     var novoEmail = document.getElementById("novoEmail");
-    var novoNome = document.getElementById("novoNome")
+    var novoNome = document.getElementById("novoNome");
+
     Update.addEventListener('click', function () {
         if (novaSenha.value===confirmaSenha.value) {
-            var email = emailLogado();
+
+            var user = firebase.auth().currentUser;
+            var email;
+            // Definindo o email do usuário logado
+            if (user != null) {
+                email = user.email;
+            }
+            console.log(email);
             firebase.database().ref('Usuários').on('value', function (snapshot){
                 snapshot.forEach(function (item) {
+                    console.log(item.val().key);
+                    console.log(email===item.val().Email);
                     if (email === item.val().Email) {
-                        if (email !== item.val().Email){
-                            user.updateEmail(email).then(function () {
-                                // Update successful.
+                        if (novoEmail !== item.val().Email){
+                            user.updateEmail(novoEmail).then(function () {
+
                             }).catch(function (error) {
                                 window.alert("Email não pôde ser autualizado")
                             });
                         }
                         if (item.val().Nome !== novoNome) {
                             item.val().Nome = novoNome;
-                            item.val().update();
+                            console.log(item.val().Nome);
+                            // item.update();
+                            console.log(item.val().Nome)
                         }
-                        if (novaSenha !== "") {
-                            user.updatePassword(novaSenha).then(function () {
-                                // Update successful.
-                            }).catch(function (error) {
-                                window.alert("Não foi possível atualizar a sua senha!")
-                            });
-                        }
+
+                        // Atualiza senha
+                        // if (novaSenha !== "") {
+                        //     user.updatePassword(novaSenha).then(function () {
+                        //         // Update successful.
+                        //     }).catch(function (error) {
+                        //         window.alert("Não foi possível atualizar a sua senha!")
+                        //     });
+                        // }
                     }
                 });
             });
@@ -86,7 +103,6 @@ function insereEventoUpdate(){
 }
 
 function updateUser() {
-    var user = firebase.auth().currentUser;
     var nome, email, emailVerificado;
     if (user != null) {
         user.providerData.forEach(function (profile) {
