@@ -64,21 +64,21 @@ function insereEventoUpdate(){
             console.log(email);
             firebase.database().ref('Usuários').on('value', function (snapshot){
                 snapshot.forEach(function (item) {
-                    console.log(item.val().key);
-                    console.log(email===item.val().Email);
+                    var key = Object.keys(snapshot.val())[0];
                     if (email === item.val().Email) {
-                        if (novoEmail !== item.val().Email){
-                            user.updateEmail(novoEmail).then(function () {
-
-                            }).catch(function (error) {
-                                window.alert("Email não pôde ser autualizado")
-                            });
-                        }
+                        console.log(key);
+                        // if (novoEmail !== item.val().Email){
+                        //     user.updateEmail(novoEmail).then(function () {
+                        //
+                        //     }).catch(function (error) {
+                        //         window.alert("Email não pôde ser autualizado")
+                        //     });
+                        // }
                         if (item.val().Nome !== novoNome) {
-                            item.val().Nome = novoNome;
-                            console.log(item.val().Nome);
-                            // item.update();
-                            console.log(item.val().Nome)
+                            firebase.database().ref('Usuários/'+key).update({
+                                Nome: novoNome
+                            });
+                            console.log("funcionou")
                         }
 
                         // Atualiza senha
