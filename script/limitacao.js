@@ -9,9 +9,8 @@ firebase.auth().onAuthStateChanged(function(user) {
     var opcaomenu = "<div class='menu-left' ><ul>";
     opcaomenu+="<li><a href='index.html'>Página Inicial</a></li>"
     opcaomenu+="<li><a onclick='preencheUpdate()' href='#'>Minha Conta</a></li>";
-    opcaomenu+="<li><a href=''>Minhas Reservas</a></li>"
-    opcaomenu+="<li><a href=''>História das Reservas</a></li>";
-    opcaomenu+="<li ><a  onclick='sair()' href='' >Sair</a></li>";
+    opcaomenu+="<li><a onclick='preencheCadastroTipo()' href='#'>Cadastrar Tipos de Espaços</a></li>";
+    opcaomenu+="<li><a onclick='preencheCadastroEspaco()' href='#'>Cadastrar Espaços</a></li>";
 
     opcaomenu+="</ul>";
     opcaomenu+="</div>";
@@ -21,7 +20,7 @@ firebase.auth().onAuthStateChanged(function(user) {
     var sair = document.getElementById("sair");
     
     var funcaosair = "<a href='' class='link-header' onclick='sair()'><img src='../images/logout.png' class='logout'>Sair</a>";
-    
+
     sair.innerHTML = funcaosair;
 
     
