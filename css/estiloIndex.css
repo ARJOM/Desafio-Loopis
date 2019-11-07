@@ -12,6 +12,12 @@ body {
     grid-template-areas: "header header" "left right";
 }
 
+
+aligin
+.textocentralizado{
+    text-align: center;;
+}
+
 header {
     grid-area: header;
     background: #1C1C1C;
@@ -90,6 +96,9 @@ p {
     text-transform: uppercase;
     font-family: 'Open Sans Condensed', sans-serif;
     font-weight: bold;
+    margin-top: 20px;
+    border-left-width: medium;
+    margin-left: 20px;
 }
 
 #btn:hover {
