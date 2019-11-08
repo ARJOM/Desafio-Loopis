@@ -109,16 +109,16 @@ function RegistrarEspacos(){
     var Local = document.getElementById("local");
     var Capacidade = document.getElementById("capacidade");
     var valorTipo = document.getElementById("ListadeTipodeEspaco");
-
+    var chave = firebase.database().ref().child('Espaco').push().key;
     var Espaco = {
         NomedoEspaco : NomedoEspaco.value,
         TipoEspaco: valorTipo.value,
         Local: Local.value,
         Capacidade: Capacidade.value,
+        Chave: chave,
     };
     if (NomedoEspaco.value !== "") {
-        let db = firebase.database().ref().child("Espaco").push(Espaco);
-        db.set(Espaco);
+        let db = firebase.database().ref().child("Espaco/"+chave).set(Espaco);
         alert("Tipo de Espaço Adcionado com sucesso")
     } else{
         alert("Tipo de Espaço NÂO Adicionado")
