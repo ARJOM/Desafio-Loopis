@@ -59,38 +59,45 @@ async function insereEventoUpdate(){
             }
 
             firebase.database().ref('Usuarios').on('value', function (snapshot){
-                 snapshot.forEach(function (item) {
+                snapshot.forEach(function (item) {
                     if (email === item.val().Email) {
-
                         //Definição das variáveis a serem utilizadas
                         var key = Object.keys(snapshot.val())[0];
+                        console.log("Chave: "+key);
                         var novoNome = document.getElementById("novoNome").value;
 
+                        var novoEmail = document.getElementById("novoEmail").value;
+
+
                         if ( novoEmail !== item.val().Email){
+                            console.log("Emails diferentes");
                             //Atualizando email na autenticação
-                            atualizaEmail(key);
+                            atualizaEmail(key, novoEmail);
                         }
+
                         //Atualizando nome no banco de dados
                         if (item.val().Nome !== novoNome && novoNome !== "") {
+                            console.log("Nomes diferentes");
+                            // console.log(novoNome)
                             firebase.database().ref('/Usuarios/'+key).update({
                                 Nome: novoNome
                             });
-                            alert("Nome atualizado")
+                            console.log("Nome atualizado")
                         }
 
                         //Atualiza senha
-                        if (novaSenha !== "") {
+                        if (novaSenha.value !== "") {
                             atualizaSenha();
                         }
                     }
                 });
             });
 
-            user.Email = document.getElementById("novoEmail").value;
-            user.Nome = document.getElementById("novoNome").value;
+            // user.Email = document.getElementById("novoEmail").value;
+            // user.Nome = document.getElementById("novoNome").value;
 
         } else{
-            alert("Senhas imcompativeis!");
+            console.log("Senhas imcompativeis!");
         }
     });
 }
@@ -132,20 +139,20 @@ function deleteUser() {
 
 // Funções auxiliares
 
-function atualizaEmail(key) {
+function atualizaEmail(key, novoEmail) {
 
-    alert("entrou na função");
-    var novoEmail = document.getElementById("novoEmail").value;
-    console.log(novoEmail);
+    console.log("entrou na função"+key);
+    console.log("Email para atualizar: "+novoEmail);
+
     var user = firebase.auth().currentUser;
-    console.log("Email logado: "+user.email);
+
+    //Atualizando email no Authentication
     user.updateEmail(novoEmail).then(function () {
         //Atualizando email no banco de dados
-        alert("atualizou")
         firebase.database().ref('/Usuarios/'+key).update({
             Email: novoEmail
         });
-        console.log("Email atualizado");
+        // console.log("Email atualizado");
     }).catch(function (error) {
         console.log("Email não pôde ser autualizado"+error);
     });
@@ -155,10 +162,10 @@ function atualizaEmail(key) {
 function atualizaSenha() {
     var novaSenha = document.getElementById("novaSenha").value;
     var user = firebase.auth().currentUser;
-    user.updatePassword(novaSenha).then(function () {
-        alert("Deu certo!")
+    user.updatePassword(novaSenha).then(function (){
+        console.log("Senha atualizada!")
     }).catch(function (error) {
-        window.alert("Não foi possível atualizar a sua senha!")
+        console.log("Não foi possível atualizar a sua senha!")
     });
 
 }
