@@ -64,8 +64,9 @@ function RegistrarTiposdeEspacos(){
 
     var TipoEspaco = document.getElementById("tipoespaco");
     console.log(TipoEspaco);
+    var chave = firebase.database().ref().child('TiposdeEspaco').push().key;
     var TiposdeEspaco = {
-        
+        Chave: chave,
         TipoEspaco: TipoEspaco.value,
     };
 
@@ -78,8 +79,7 @@ function RegistrarTiposdeEspacos(){
             }
         }
         if (!existe) {
-            let db = firebase.database().ref().child("TiposdeEspaco").push(TiposdeEspaco);
-            db.set(TiposdeEspaco);
+            firebase.database().ref().child("TiposdeEspaco/"+chave).set(TiposdeEspaco);
             alert("Tipo de Espaço Adcionado com sucesso");
             getTipos();
         }else {
@@ -95,7 +95,7 @@ function abrir(){
         snapshot.forEach(function (item){ 
         var Option = document.createElement("option");
         Option.innerHTML = item.val().TipoEspaco;
-        Option.setAttribute("value", Object.keys(snapshot.val())[0]);
+        Option.setAttribute("value", item.val().Chave);
         document.getElementById("ListadeTipodeEspaco").appendChild(Option);
         })
     })
