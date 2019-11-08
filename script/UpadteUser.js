@@ -119,7 +119,7 @@ function insereEventoDelete() {
         firebase.database().ref('Usuarios').on('value', function (snapshot){
             snapshot.forEach(function (item) {
                 if (email === item.val().Email) {
-                    deleteUser();
+                    deleteUser(item.val().Chave);
                 }
             });
         });
@@ -164,9 +164,11 @@ function deleteUser(key) {
 
     user.delete().then(function () {
         firebase.database().ref('/Usuarios/'+key).remove();
-        window.location.href = 'login.html'
+        setTimeout(function() {
+        }, 1000);
     }).catch(function (error) {
-        window.alert("Não foi possível remover a sua conta!")
+        window.alert("Não foi possível remover a sua conta!\n"+error);
+        console.log("Erro: "+error);
     });
 
 }
