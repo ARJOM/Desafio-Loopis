@@ -18,20 +18,23 @@ if(Cadastrar!=null){
 //Função para criar conta de Email e Senha no autenticador e para cadastrar dados no realtime
     Cadastrar.addEventListener('click', function () {
         if (Senha.value==ConfirmacaodeSenha.value) {
+            var chave = firebase.database().ref().child('usuarios').push().key;
             var Users = {
                 Nome : Nome.value,
                 Email : Email.value,
                 Moderador: y,
                 Administrador: y,
                 Ativo: y,
+                Chave: chave,
               };
 
         firebase
         .auth()
         .createUserWithEmailAndPassword(Email.value, Senha.value)
         .then(function() {
-            let db = firebase.database().ref().child('Usuarios').push(Users);
-            db.set(Users);
+
+            firebase.database().ref().child('Usuarios/'+chave).set(Users);
+
         alert(Email.value + " - Conta cadastrada com sucesso!");
         Nome.value="";
         Email.value="";

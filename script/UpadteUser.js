@@ -50,19 +50,22 @@ async function insereEventoUpdate(){
 
     Update.addEventListener('click', function () {
         if (novaSenha.value===confirmaSenha.value) {
-
+            console.log("Senhas iguias")
             var user = firebase.auth().currentUser;
             var email;
             // Definindo o email do usuário logado
             if (user != null) {
                 email = user.email;
             }
+            console.log("Email logado: "+email);
 
             firebase.database().ref('Usuarios').on('value', function (snapshot){
                 snapshot.forEach(function (item) {
+                    console.log("Email comparado: "+item.val().Email);
                     if (email === item.val().Email) {
+
                         //Definição das variáveis a serem utilizadas
-                        var key = Object.keys(snapshot.val())[0];
+                        var key = item.val().Chave;
                         console.log("Chave: "+key);
                         var novoNome = document.getElementById("novoNome").value;
 
