@@ -7,33 +7,34 @@ firebase.auth().onAuthStateChanged(function(user) {
     var menu = document.getElementById("menu");
     
     var opcaomenu = "<div class='menu-left' ><ul>";
-    opcaomenu+="<li><a href='index.html'>Página Inicial</a></li>"
-    opcaomenu+="<li><a onclick='preencheUpdate()' href='#'>Minha Conta</a></li>";
-    opcaomenu+="<li><a onclick='preencheCadastroTipo()' href='#'>Cadastrar Tipos de Espaços</a></li>";
-    opcaomenu+="<li><a onclick='preencheCadastroEspaco()' href='#'>Cadastrar Espaços</a></li>";
-
+    opcaomenu+="<li><a href='index.html' class='link-left'>Página Inicial</a></li>"
+    opcaomenu+="<li><a onclick='preencheUpdate()' href='#' class='link-left'>Minha Conta</a></li>";
+    opcaomenu+="<li><a onclick='preencheCadastroTipo()' href='#' class='link-left'>Cadastrar Tipos de Espaços</a></li>";
+    opcaomenu+="<li><a onclick='preencheCadastroEspaco()' href='#' class='link-left'>Cadastrar Espaços</a></li>";
+    //opcaomenu+="<li><a onclick='preencheCadastroEspaco()' href='#' class='link-left'class='dropdown-left'>Nova Sala</a></li>";  
+   // <ul class="dropdown1">
+    //<li><a href="#" class="link-left">Salas</a></li>
+    //<li><a href="#" class="link-left">Laboratórios</a></li>
+    //<li><a href="#" class="link-left">Ginásios</a></li>
+    //</ul>
     opcaomenu+="</ul>";
     opcaomenu+="</div>";
 
     menu.innerHTML = opcaomenu;
 
-    var sair = document.getElementById("sair");
+   
+var h1 = document.getElementById("h1");
     
-    var funcaosair = "<a href='' class='link-header' onclick='sair()'><img src='../images/logout.png' class='logout'>Sair</a>";
+    var 
+    cabecalho = "<img src='../images/logo.png' alt='logo' class='logo'>";
+    cabecalho+= "<a href='' class='link-header' onclick='sair()'><img src='../images/logout.png' class='logout'>Sair</a>";
 
-    sair.innerHTML = funcaosair;
-
-    
-
-    
-    /*
+    h1.innerHTML = cabecalho; 
         
         
         
         
         
-          
-*/
 
     } else {
       alert("Você não está autenticado, precisa fazer o login para entrar!");
