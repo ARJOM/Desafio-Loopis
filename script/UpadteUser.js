@@ -115,14 +115,16 @@ function insereEventoDelete() {
         if (user != null) {
             email = user.email;
         }
-
-        firebase.database().ref('Usuarios').on('value', function (snapshot){
-            snapshot.forEach(function (item) {
-                if (email === item.val().Email) {
-                    deleteUser(item.val().Chave);
-                }
+        var sure = confirm("Tem certeza que deseja excluir sua conta?");
+        if (sure) {
+            firebase.database().ref('Usuarios').on('value', function (snapshot) {
+                snapshot.forEach(function (item) {
+                    if (email === item.val().Email) {
+                        deleteUser(item.val().Chave);
+                    }
+                });
             });
-        });
+        }
     });
 }
 
@@ -143,7 +145,7 @@ function atualizaEmail(key, novoEmail) {
         });
         // console.log("Email atualizado");
     }).catch(function (error) {
-        console.log("Email não pôde ser autualizado"+error);
+        window.alert("Email não pôde ser autualizado");
     });
 
 }
@@ -154,7 +156,7 @@ function atualizaSenha() {
     user.updatePassword(novaSenha).then(function (){
         console.log("Senha atualizada!")
     }).catch(function (error) {
-        console.log("Não foi possível atualizar a sua senha!")
+        window.alert("Não foi possível atualizar a sua senha!")
     });
 
 }
@@ -164,11 +166,8 @@ function deleteUser(key) {
 
     user.delete().then(function () {
         firebase.database().ref('/Usuarios/'+key).remove();
-        setTimeout(function() {
-        }, 1000);
     }).catch(function (error) {
-        window.alert("Não foi possível remover a sua conta!\n"+error);
-        console.log("Erro: "+error);
+        window.alert("Não foi possível remover a sua conta!");
     });
 
 }
