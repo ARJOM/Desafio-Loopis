@@ -37,7 +37,7 @@ function preencheUpdate() {
     });
 
     insereEventoUpdate();
-    //insereEventoDelete();
+    insereEventoDelete();
 }
 
 // Update usuário
@@ -102,39 +102,25 @@ async function insereEventoUpdate(){
     });
 }
 
-function updateUser() {
-    var nome, email, emailVerificado;
-    if (user != null) {
-        user.providerData.forEach(function (profile) {
-            email = profile.email;
+function insereEventoDelete() {
+    var Delete = document.getElementById("delete");
+    Delete.addEventListener('click', function () {
+
+        var user = firebase.auth().currentUser;
+        var email;
+        // Definindo o email do usuário logado
+        if (user != null) {
+            email = user.email;
+        }
+
+        firebase.database().ref('Usuarios').on('value', function (snapshot){
+            snapshot.forEach(function (item) {
+                if (email === item.val().Email) {
+                    deleteUser();
+                }
+            });
         });
-    }
-
-    var main = document.getElementById("main");
-
-    // user.updateProfile({
-    //     Nome: nome,
-    // }).then(function() {
-    //     // Update successful.
-    // }).catch(function(error) {
-    //     window.alert("Nome não pôde ser atualizado")
-    // });
-
-
-
-    // preencheUpdate();
-}
-
-function deleteUser() {
-    var user = firebase.auth().currentUser;
-
-    user.delete().then(function() {
-        window.alert("Usuário removido com sucesso!")
-        window.location.href = 'login.html'
-    }).catch(function(error) {
-        window.alert("Não foi possível remover a sua conta!")
     });
-
 }
 
 // Funções auxiliares
@@ -166,6 +152,18 @@ function atualizaSenha() {
         console.log("Senha atualizada!")
     }).catch(function (error) {
         console.log("Não foi possível atualizar a sua senha!")
+    });
+
+}
+
+function deleteUser(key) {
+    var user = firebase.auth().currentUser;
+
+    user.delete().then(function () {
+        firebase.database().ref('/Usuarios/'+key).remove();
+        window.location.href = 'login.html'
+    }).catch(function (error) {
+        window.alert("Não foi possível remover a sua conta!")
     });
 
 }
