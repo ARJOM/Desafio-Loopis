@@ -12,11 +12,8 @@ body {
     grid-template-areas: "header header" "left right";
 }
 
-
-aligin
-
 .textocentralizado{
-    text-align: center;;
+    text-align: center;
 }
 
 header {
@@ -162,6 +159,7 @@ p {
     text-transform: uppercase;
     font-family: 'Open Sans Condensed', sans-serif;
     letter-spacing: 3px;
+    margin-right: 100px;
 }
 
 .update form {
@@ -171,6 +169,7 @@ p {
     grid-template-areas: "email email" "nome atual" "nova confirmar" "remover atualizar";
     justify-content: space-evenly;
     margin-top: 40px;
+    margin-right: 150px;
     grid-column-gap: 15px;
     grid-row-gap: 25px;
 }
@@ -224,7 +223,12 @@ p {
 }
 
 #novoEmail {
-   width: 700px;
+   width: 650px;
+}
+
+.submit, .delete {
+    width: 100%;
+    margin-left: 50px;
 }
 
 .submit, .delete a {
@@ -237,23 +241,16 @@ p {
     cursor: pointer;
 }
 
-@media screen and (max-width:400px) {
-    .update form {
-        grid-template-columns: 200px;
-        grid-template-rows: 100px 100px 100px 100px 100px 30px 30px;
-        grid-template-areas: "email" "nome" "atual" "nova" "confirmar" "remover" "atualizar";
-        justify-content: center;
-        grid-row-gap: 5px;
-    }
-}
+@media screen and (max-width: 400px) {
 
-@media (max-width: 400px) {
+    /*botão pra esconder menu lateral */
 
     #menu {
         position: fixed;
         width: 200px;
-        height: 100%;
-        background: black;
+        height: 85vh;
+        background-color: #1C1C1C;
+        top: 100px;
         left: -200px;
         transition: all 500ms linear;
     }
@@ -264,7 +261,7 @@ p {
 
     #menu .responsive-button {
         position: absolute;
-        top: 100px;
+        top: 20px;
         left: 230px;
     }
 
@@ -272,8 +269,32 @@ p {
         display: block;
         width: 30px;
         height: 5px;
-        background: black;
+        background-color: #1C1C1C;
         margin: 5px 0;
     } 
 
+    /* tela de update de usuário */
+    .update {
+        width: 0;
+    }
+    .update form {
+        grid-template-columns: 200px;
+        grid-template-rows: 100px 100px 100px 100px 100px 30px 30px;
+        grid-template-areas: "email" "nome" "atual" "nova" "confirmar" "remover" "atualizar";
+        justify-content: center;
+        grid-row-gap: 5px;
+        margin-top: 10px;
+        margin-left: 45px;
+        margin-right: 0;
+        padding-bottom: 15px;
+    }
+    #novoEmail {
+        width: 300px;
+    }
+
+    .update h2 {
+        font-size: 20px;
+        margin-left: 50px;
+        margin-right: 0;
+    }
 }
