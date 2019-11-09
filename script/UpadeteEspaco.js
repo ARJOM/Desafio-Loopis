@@ -80,7 +80,7 @@ function deleteTipo(key) {
     //atualizando página para recarregar lista de tipos cdastrados
     window.location.reload();
     //TODO redirecionar o usuário para a página de update de espaço
-    preencheUpdateEspaco();
+    preencheUpdateTipoEspaco();
 }
 
 //Update de Espaço
@@ -129,7 +129,7 @@ function insereEspaco(key) {
 
     resultado += "</form><br/>";
     resultado += "<button id='btn' name='editarEspaco' onclick=\"editaEspaco('"+key+"')\">Editar Espaço</button>";
-    resultado += "<button id='btn' name='deletarEspaco' onclick='deletarEspaco()'>Deletar Espaço</button>";
+    resultado += "<button id='btn' name='deletarEspaco' onclick=\"deleteEspaco('"+key+"')\">Deletar Espaço</button>";
 
     main.innerHTML = resultado;
 
@@ -176,4 +176,10 @@ function editaEspaco(key) {
     } else {
         window.alert("Nome não pode ser nulo");
     }
+}
+
+function deleteEspaco(key) {
+    firebase.database().ref('/Espaco/'+key).remove();
+    window.alert("Espaço excluído!");
+    preencheUpdateEspaco();
 }
