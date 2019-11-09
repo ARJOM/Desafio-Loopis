@@ -1,10 +1,10 @@
-// Preenche tela de update
-function preencheUpdateEspaco() {
+// Update de Tipo de Espaço
+function preencheUpdateTipoEspaco() {
 
     var main = document.getElementById("main");
 
     var resultado = "";
-    resultado+="<h2>alterando tipo</h2>";
+    resultado+="<h2>alterando tipos</h2>";
 
     firebase.database().ref('TiposdeEspaco').on('value', function (snapshot) {
         snapshot.forEach(function (item) {
@@ -78,4 +78,33 @@ function deleteTipo(key) {
     window.location.reload();
     //TODO redirecionar o usuário para a página de update de espaço
     preencheUpdateEspaco();
+}
+
+//Update de Espaço
+function preencheUpdateEspaco() {
+
+    var main = document.getElementById("main");
+
+    var resultado = "";
+    resultado+="<h2>alterando espaços</h2>";
+    resultado += "<table>";
+    resultado += "<tr><th>Nome</th><th>Local</th><th>Capacidade</th></tr>"
+
+    firebase.database().ref('Espaco').on('value', function (snapshot) {
+        snapshot.forEach(function (item) {
+            resultado += "<tr>"
+            resultado += "<td><a onclick=\"insereEspaco('"+item.val().Chave+"')\" href='#'>"+ item.val().NomedoEspaco +"</a></td>";
+            resultado += "<td>"+ item.val().Local +"</td>";
+            resultado += "<td>"+ item.val().Capacidade +"</td>";
+            resultado += "</tr>";
+        });
+    });
+    setTimeout(function() {
+        resultado += "</table>";
+        main.innerHTML = resultado;
+    }, 1000);
+}
+
+function insereTipo(key) {
+    
 }
