@@ -1,4 +1,4 @@
-//Função para listar todos os usuários cadastrados inclusive o administrador;
+//Função para listar todos os usuários cadastrados ativo ou não para cadastro inclusive o moderador;
 function listaUserReserva(){
     var main = document.getElementById("main");
     var resultado = "";
