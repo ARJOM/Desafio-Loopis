@@ -39,7 +39,7 @@ function editargerenciaReserva(key){
     resultado += "</select>";
     resultado += "</select>";
     resultado += "</form><br/>";
-    resultado += "<button id='btn' name='Editar Nivel' onclick=\"editarNiveldeReserva('"+key+"')\">Editar Nivel</button><br/>";
+    resultado += "<button id='btn' name='Editar Nivel' onclick=\"editarNiveldeReserva('"+key+"')\">Editar Status</button><br/>";
     resultado += "<button id='btn' name='Gerenciar Níveis' onclick='listaUserReserva()'>Voltar para Status de Usuários</button>"
     main.innerHTML = resultado;
 
