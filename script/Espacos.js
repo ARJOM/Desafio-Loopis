@@ -8,12 +8,11 @@ function preencheCadastroTipo() {
     resultado += "<div class='content'>";
     resultado += "<h2 id='textocentralizado'>Cadastro de Tipo de Espaço</h2>";
     resultado += "<p class='text'>Tipo de Espaço</p>";
-    resultado += "<input id='tipoespaco'></br>";
+    resultado += "<input id='tipoespaco'>";
 
-    resultado += "<button value='' id='btn' onclick='RegistrarTiposdeEspacos()'>Registrar Tipo de Espaço</button>";
-    resultado += "<a href='#' onclick='preencheCadastroEspaco()' id='btn' >Cadastro de Espaço</a>";
-    resultado += "</div>";
-
+    resultado += "<a href='#' class='btn' onclick='RegistrarTiposdeEspacos()'>Registrar Tipo de Espaço</a>";
+    resultado += "<a href='#' onclick='preencheCadastroEspaco()' class='btn' >Cadastro de Espaço</a>";
+    resultado += "</div></div>";
     main.innerHTML = resultado;
 }
 
