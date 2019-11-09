@@ -212,3 +212,34 @@ p {
         grid-row-gap: 5px;
     }
 }
+
+@media (max-width: 400px) {
+
+    #menu {
+        position: fixed;
+        width: 200px;
+        height: 100%;
+        background: black;
+        left: -200px;
+        transition: all 500ms linear;
+    }
+
+    #menu.active {
+        left: 0;
+    }
+
+    #menu .responsive-button {
+        position: absolute;
+        top: 100px;
+        left: 230px;
+    }
+
+    #menu .responsive-button span {
+        display: block;
+        width: 30px;
+        height: 5px;
+        background: black;
+        margin: 5px 0;
+    } 
+
+}
