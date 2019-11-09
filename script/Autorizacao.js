@@ -1,18 +1,17 @@
 //Função para listar todos os usuários cadastrados inclusive o administrador;
-function listaUser(){
+function listaUserReserva(){
     var main = document.getElementById("main");
     var resultado = "";
     resultado+="<h2>Usuários</h2>";
     resultado += "<table>";
-    resultado += "<tr><th>Nome</th><th>Email</th><th>Moderador</th><th>Administrador</th></tr>"
+    resultado += "<tr><th>Nome</th><th>Email</th><th>Ativo</th></tr>"
     //Listando todos os Usuários
     firebase.database().ref('Usuarios').on('value', function (snapshot) {
         snapshot.forEach(function (item) {
             resultado += "<tr>"
-            resultado += "<td><a onclick=\"editargerencia('"+item.val().Chave+"')\" href='#'>"+ item.val().Nome +"</a></td>";
+            resultado += "<td><a onclick=\"editargerenciaReserva('"+item.val().Chave+"')\" href='#'>"+ item.val().Nome +"</a></td>";
             resultado += "<td>"+ item.val().Email +"</td>";
-            resultado += "<td>"+ item.val().Moderador +"</td>";
-            resultado += "<td>"+ item.val().Administrador +"</td>";
+            resultado += "<td>"+ item.val().Ativo +"</td>";
             resultado += "</tr>";
         });
     });
@@ -20,33 +19,28 @@ function listaUser(){
         resultado += "</table>";
         main.innerHTML = resultado;
     }, 1000);
-
 }
 
-
 //Função para editar cada usuário individualmente;
-function editargerencia(key){
+function editargerenciaReserva(key){
+
     var main = document.getElementById("main");
     var resultado = "";
-    resultado += "<h2>Edição de nivel de Usuário</h2>";
+    resultado += "<h2>Edição de Status de Usuário</h2>";
     resultado += "<form>";
     resultado += "<p>Nome</p>";
     resultado += "<input id='nome' disabled>";
     resultado += "<p>Email</p>";
     resultado += "<input id='email' disabled>";
-    resultado += "<p>Moderador</p>";
-    resultado += "<select id='moderador' >";
+    resultado += "<p>Ativo</p>";
+    resultado += "<select id='ativo' >";
     resultado +="<option>true</option>";
     resultado +="<option>false</option>";
     resultado += "</select>";
-    resultado += "<p>Administrador</p>";
-    resultado += "<select id='administrador' >";
-    resultado +="<option>true</option>";
-    resultado +="<option>false</option>";
     resultado += "</select>";
     resultado += "</form><br/>";
-    resultado += "<button id='btn' name='Editar Nivel' onclick=\"editarNivel('"+key+"')\">Editar Nivel</button><br/>";
-    resultado += "<button id='btn' name='Gerenciar Níveis' onclick='listaUser()'>Voltar para Gerenciador de Níveis </button>"
+    resultado += "<button id='btn' name='Editar Nivel' onclick=\"editarNiveldeReserva('"+key+"')\">Editar Nivel</button><br/>";
+    resultado += "<button id='btn' name='Gerenciar Níveis' onclick='listaUserReserva()'>Voltar para Status de Usuários</button>"
     main.innerHTML = resultado;
 
 
@@ -55,8 +49,7 @@ function editargerencia(key){
             if (key === item.val().Chave){
                 document.getElementById("nome").value = item.val().Nome;
                 document.getElementById("email").value = item.val().Email;
-                document.getElementById("moderador").value = item.val().Moderador;
-                document.getElementById("administrador").value = item.val().Administrador;
+                document.getElementById("ativo").value = item.val().Ativo;
             }
         });
     });
@@ -65,18 +58,14 @@ function editargerencia(key){
 
 
 //Função enviar dados para o banco de dados realtime;
-function editarNivel(key){
+function editarNiveldeReserva(key){
+    var AtivoNovo = document.getElementById("ativo").value;
     
-    var ModeradorNovo = document.getElementById("moderador").value;
-    var administradorNovo = document.getElementById("administrador").value;
-    console.log(administrador);
-    console.log(moderador);
         //Editando no banco
         firebase.database().ref('/Usuarios/' + key).update({
-            Moderador: ModeradorNovo,
-            Administrador: administradorNovo,
+            Ativo: AtivoNovo,
         });
         window.alert("Atualizado com sucesso!");
-        editargerencia(key)
+        editargerenciaReserva(key)
 } 
 
