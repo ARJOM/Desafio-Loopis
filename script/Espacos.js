@@ -5,11 +5,13 @@ function preencheCadastroTipo() {
 
     var resultado = "";
     resultado += "<div class='buscar'>";
+    resultado += "<h2 class='textocentralizado'>Cadastro de Tipo de Espaço</h2>";
+    resultado += "<div class='buscar-box'>";
     resultado += "<div class='content'>";
-    resultado += "<h2 id='textocentralizado'>Cadastro de Tipo de Espaço</h2>";
     resultado += "<p class='text'>Tipo de Espaço</p>";
     resultado += "<input id='tipoespaco'>";
-
+    resultado += "</div>";
+    resultado += "<div class='botoes'>";
     resultado += "<a href='#' class='btn' onclick='RegistrarTiposdeEspacos()'>Registrar Tipo de Espaço</a>";
     resultado += "<a href='#' onclick='preencheCadastroEspaco()' class='btn' >Cadastro de Espaço</a>";
     resultado += "</div></div>";
@@ -21,24 +23,22 @@ function preencheCadastroEspaco(){
 
     var resultado = "";
     resultado += "<div class='buscar' >";
-    resultado += "<div class='content'>";
-
-    resultado += "<h2 id='textocentralizado'>Cadastro de Espaço</h2>";
-
+    resultado += "<h2 class='textocentralizado'>Cadastro de Espaço</h2>";
     resultado += "<form class='espaco'>";
     resultado += "<p class='text'>Tipos de Espaço</p>";
     resultado += "<select id='ListadeTipodeEspaco' >";
     resultado += "</select>";
-    resultado += "<p>Nome do Espaço</p>";
+    resultado += "<p class='text'>Nome do Espaço</p>";
     resultado += "<input id='nomeespaco'>";
-    resultado += "<p>Local</p>";
+    resultado += "<p class='text'>Local</p>";
     resultado += "<input id='local'>";
-    resultado += "<p>Capacidade</p>";
+    resultado += "<p class='text'>Capacidade</p>";
     resultado += "<input id='capacidade'>";
 
-    resultado += "</form><br/>";
-    resultado += "<button id='btn' name='RegistrarEspaco' onclick='RegistrarEspacos()'>Registrar Espaço</button>";
-    resultado += "<a href='#' onclick='preencheCadastroTipo()' id='btn' >Cadastro de Tipo de Espaço</a>";
+    resultado += "</form>";
+    resultado += "<div class='botoes'>"
+    resultado += "<a href='#' class='btn' onclick='RegistrarEspacos()'>Registrar Espaço</a>";
+    resultado += "<a href='#' onclick='preencheCadastroTipo()' class='btn' >Cadastro de Tipo de Espaço</a>";
     resultado += "</div>";
     resultado += "</div>";
 
