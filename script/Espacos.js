@@ -81,7 +81,7 @@ function RegistrarTiposdeEspacos(){
         if (!existe) {
             firebase.database().ref().child("TiposdeEspaco/"+chave).set(TiposdeEspaco);
             alert("Tipo de Espaço Adcionado com sucesso");
-            getTipos();
+            getTipos(tipos);
         }else {
             alert("Já existe um tipo de espaço cadastrado com esse nome");
         }
