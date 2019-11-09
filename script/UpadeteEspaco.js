@@ -22,8 +22,11 @@ function preencheUpdateTipoEspaco() {
 }
 
 function insereTipo(key) {
+
     var main = document.getElementById("main");
+
     var resultado = "";
+
     resultado+="<h2>alterando tipo</h2>";
     resultado+="<p class='text'>Tipo de Espaço</p>";
     resultado += "<input type='text' id='tipoespaco'></br>";
@@ -105,6 +108,72 @@ function preencheUpdateEspaco() {
     }, 1000);
 }
 
-function insereTipo(key) {
-    
+function insereEspaco(key) {
+
+    var main = document.getElementById("main");
+
+    var resultado = "";
+
+    resultado += "<h2>Edição de Espaço</h2>";
+
+    resultado += "<form>";
+    resultado += "<p class='text'>Tipos de Espaço</p>";
+    resultado += "<select id='ListadeTipodeEspaco' >";
+    resultado += "</select>";
+    resultado += "<p>Nome do Espaço</p>";
+    resultado += "<input id='nomeespaco'>";
+    resultado += "<p>Local</p>";
+    resultado += "<input id='local'>";
+    resultado += "<p>Capacidade</p>";
+    resultado += "<input id='capacidade'>";
+
+    resultado += "</form><br/>";
+    resultado += "<button id='btn' name='editarEspaco' onclick=\"editaEspaco('"+key+"')\">Editar Espaço</button>";
+    resultado += "<button id='btn' name='deletarEspaco' onclick='deletarEspaco()'>Deletar Espaço</button>";
+
+    main.innerHTML = resultado;
+
+    selcionarOption();
+
+    firebase.database().ref('Espaco').on('value', function (snapshot) {
+        snapshot.forEach(function (item) {
+            if (key === item.val().Chave){
+                document.getElementById("nomeespaco").value = item.val().NomedoEspaco;
+                document.getElementById("local").value = item.val().Local;
+                document.getElementById("capacidade").value = item.val().Capacidade;
+                document.getElementById("ListadeTipodeEspaco")
+            }
+        });
+    });
+
+}
+
+function selcionarOption(){
+    firebase.database().ref('TiposdeEspaco').on('value', function (snapshot){
+        snapshot.forEach(function (item){
+            var Option = document.createElement("option");
+            Option.innerHTML = item.val().TipoEspaco;
+            Option.setAttribute("value", item.val().Chave);
+            document.getElementById("ListadeTipodeEspaco").appendChild(Option);
+        })
+    })
+}
+
+function editaEspaco(key) {
+
+    var novoTipo = document.getElementById("ListadeTipodeEspaco").value;
+    var novoNome = document.getElementById("nomeespaco").value;
+    var novoLocal = document.getElementById("local").value;
+    var novaCapacidade = document.getElementById("capacidade").value;
+    if (novoNome !== "") {
+        firebase.database().ref('/Espaco/' + key).update({
+            TipoEspaco: novoTipo,
+            NomedoEspaco: novoNome,
+            Local: novoLocal,
+            Capacidade: novaCapacidade,
+        });
+        window.alert("Atualizado com sucesso!");
+    } else {
+        window.alert("Nome não pode ser nulo");
+    }
 }
