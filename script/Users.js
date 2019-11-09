@@ -3,8 +3,8 @@ var Nome = document.getElementById("nome");
 var Email = document.getElementById("email");
 var Senha = document.getElementById("senha");
 var ConfirmacaodeSenha = document.getElementById("senhaconfirmar");
-var x = true;
-var y = false;
+var x = "true";
+var y = "false";
 
 
 
