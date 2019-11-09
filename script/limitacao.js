@@ -12,6 +12,7 @@ firebase.auth().onAuthStateChanged(function(user) {
     opcaomenu+="<li><a onclick='preencheCadastroTipo()' href='#' class='link-left'>Cadastrar Tipos de Espaços</a></li>";
     opcaomenu+="<li><a onclick='preencheCadastroEspaco()' href='#' class='link-left'>Cadastrar Espaços</a></li>";
     opcaomenu+="<li><a href='#' class='link-left'>Minhas Reservas</a></li>";
+    opcaomenu+="<li><a onclick='preencheUpdateEspaco()' href='#'>Editar Tipos de Espaço</a> </li>"
     //opcaomenu+="<li><a onclick='preencheCadastroEspaco()' href='#' class='link-left'class='dropdown-left'>Nova Sala</a></li>";  
    // <ul class="dropdown1">
     //<li><a href="#" class="link-left">Salas</a></li>
