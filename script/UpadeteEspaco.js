@@ -5,7 +5,7 @@ function preencheUpdateTipoEspaco() {
 
     var resultado = "";
     resultado+="<h2>alterando tipos</h2>";
-
+    //Listando tipos de espaço
     firebase.database().ref('TiposdeEspaco').on('value', function (snapshot) {
         snapshot.forEach(function (item) {
             console.log(item.val().TipoEspaco);
@@ -59,7 +59,7 @@ function editaTipo(key) {
             }
         }
         if (!existe) {
-
+            //Editando no banco
             firebase.database().ref('/TiposdeEspaco/' + key).update({
                 TipoEspaco: altera,
             });
@@ -92,7 +92,7 @@ function preencheUpdateEspaco() {
     resultado+="<h2>alterando espaços</h2>";
     resultado += "<table>";
     resultado += "<tr><th>Nome</th><th>Local</th><th>Capacidade</th></tr>"
-
+    //Listando Espaços na Tabela
     firebase.database().ref('Espaco').on('value', function (snapshot) {
         snapshot.forEach(function (item) {
             resultado += "<tr>"
@@ -141,7 +141,6 @@ function insereEspaco(key) {
                 document.getElementById("nomeespaco").value = item.val().NomedoEspaco;
                 document.getElementById("local").value = item.val().Local;
                 document.getElementById("capacidade").value = item.val().Capacidade;
-                document.getElementById("ListadeTipodeEspaco")
             }
         });
     });
@@ -166,6 +165,7 @@ function editaEspaco(key) {
     var novoLocal = document.getElementById("local").value;
     var novaCapacidade = document.getElementById("capacidade").value;
     if (novoNome !== "") {
+        //Editando no banco
         firebase.database().ref('/Espaco/' + key).update({
             TipoEspaco: novoTipo,
             NomedoEspaco: novoNome,
