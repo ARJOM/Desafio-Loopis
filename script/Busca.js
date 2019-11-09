@@ -1,4 +1,4 @@
-function preencheEspacos() {
+function preencheEspacos(key) {
 
     var main = document.getElementById("main");
 
@@ -20,5 +20,30 @@ function preencheEspacos() {
     resultado+="<input type=\"submit\" value=\"filtrar\" id=\"btn\">";
     resultado+="</div>";
 
-    main.innerHTML = resultado;
+    resultado += filtraEspacos(key);
+
+    setTimeout(function() {
+        main.innerHTML = resultado;
+    }, 1000);
+
+
+
+
+}
+
+function filtraEspacos(key) {
+    blocos = "";
+    firebase.database().ref('Espaco').on('value', function (snapshot) {
+        snapshot.forEach(function (item) {
+            console.log(item.val().TipoEspaco);
+            if (item.val().TipoEspaco === key){
+                console.log("Entrou")
+                blocos += "<div><p>"+item.val().NomedoEspaco+"</p><p>"+item.val().Local+"</p></div></br>"
+            }
+        });
+    });
+    if (blocos===""){
+        blocos = "<h2>Não há nenhum espaço cadastrado desse tipo</h2>"
+    }
+    return blocos;
 }

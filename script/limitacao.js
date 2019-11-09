@@ -14,16 +14,21 @@ firebase.auth().onAuthStateChanged(function(user) {
     opcaomenu+="<li><a href='#' class='link-left'>Minhas Reservas</a></li>";
     opcaomenu+="<li><a onclick='preencheUpdateTipoEspaco()' href='#'>Editar Tipos de Espaço</a> </li>";
     opcaomenu+="<li><a onclick='preencheUpdateEspaco()' href='#'>Editar Espaço</a> </li>";
-    //opcaomenu+="<li><a onclick='preencheCadastroEspaco()' href='#' class='link-left'class='dropdown-left'>Nova Sala</a></li>";  
-   // <ul class="dropdown1">
-    //<li><a href="#" class="link-left">Salas</a></li>
-    //<li><a href="#" class="link-left">Laboratórios</a></li>
-    //<li><a href="#" class="link-left">Ginásios</a></li>
-    //</ul>
-    opcaomenu+="</ul>";
-    opcaomenu+="</div>";
 
-    menu.innerHTML = opcaomenu;
+    // <li><a href="#" class="link-left">Salas</a></li>
+    // <li><a href="#" class="link-left">Laboratórios</a></li>
+    // <li><a href="#" class="link-left">Ginásios</a></li>
+    firebase.database().ref('TiposdeEspaco').on('value', function (snapshot) {
+        snapshot.forEach(function (item) {
+            console.log(item.val().TipoEspaco);
+            opcaomenu += "<li><a onclick=\"preencheEspacos('"+item.val().Chave+"')\" href='#' class='link-left'>"+item.val().TipoEspaco+"</a></li>";
+        });
+    });
+    setTimeout(function() {
+        menu.innerHTML = opcaomenu;
+    }, 1150);
+
+
 
 var h1 = document.getElementById("h1");
     
