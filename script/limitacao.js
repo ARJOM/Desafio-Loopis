@@ -5,13 +5,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 
     
     var menu = document.getElementById("menu");
-    /*
-    var botaoResponsivo = "<div class='responsive-button' onclick='responsiveMenu()'>";
-    botaoResponsivo+= "<a><span></span><span></span><span></span></a>";
-    botaoResponsivo+= "</div>";
-
-    menu.innerHTML = botaoResponsivo;*/
-  
+   
     var opcaomenu = "<div class='menu-left' ><ul>";
     opcaomenu+="<li><a href='index.html' class='link-left'>Página Inicial</a></li>"
     opcaomenu+="<li><a onclick='preencheUpdate()' href='#' class='link-left'>Minha Conta</a></li>";
