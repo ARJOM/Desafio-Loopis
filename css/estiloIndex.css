@@ -37,7 +37,7 @@ header {
 }
 
 .logo{
-    margin-left: 50px;
+    margin-left: 130px;
 }
 
 .logout{
@@ -248,6 +248,38 @@ p {
     cursor: pointer;
 }
 
+
+/* botão pra fechar e abrir menu lateral */
+
+#menu {
+    width: 0;
+    height: 85vh;
+    background-color: #1C1C1C;
+    transition: all 500ms linear;
+}
+
+#menu.active {
+    width: 200px;
+}
+
+.responsive-button {
+    position: absolute;
+    top: 30px;
+    left: 50px;
+}
+
+.responsive-button span {
+    display: block;
+    width: 30px;
+    height: 5px;
+    background-color: white;
+    margin: 5px 0;
+} 
+
+.responsive-button:hover {
+    cursor: pointer;
+}
+
 @media screen and (max-width: 400px) {
 
     /*telas de filtragem*/
@@ -279,36 +311,6 @@ p {
     .buscar-box {
         flex-wrap: wrap;
     }
-    
-    /*botão pra esconder menu lateral */
-
-    #menu {
-        position: fixed;
-        width: 200px;
-        height: 85vh;
-        background-color: #1C1C1C;
-        top: 100px;
-        left: -200px;
-        transition: all 500ms linear;
-    }
-
-    #menu.active {
-        left: 0;
-    }
-
-    #menu .responsive-button {
-        position: absolute;
-        top: 20px;
-        left: 230px;
-    }
-
-    #menu .responsive-button span {
-        display: block;
-        width: 30px;
-        height: 5px;
-        background-color: #1C1C1C;
-        margin: 5px 0;
-    } 
 
     /* tela de update de usuário */
     .update {
