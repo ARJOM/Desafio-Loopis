@@ -6,7 +6,7 @@ function preencheEspacos(key) {
     resultado+="<form class='reserva'>";
     resultado+="<div class=\"content\">";
     resultado+="<p class=\"text\">Data da reserva: </p>";
-    resultado+="<input type=\"date\">";
+    resultado+="<input id='data' type=\"date\">";
     resultado+="</div>";
     resultado+="<div class=\"content\">";
     resultado+="<p class=\"text\">Horário de início: </p>";
@@ -26,9 +26,6 @@ function preencheEspacos(key) {
         main.innerHTML = resultado;
     }, 1250);
 
-
-
-
 }
 
 function filtraEspacos(key) {
@@ -38,12 +35,12 @@ function filtraEspacos(key) {
             console.log(item.val().TipoEspaco);
             if (item.val().TipoEspaco === key){
                 console.log("Entrou")
-                blocos += "<div><p>"+item.val().NomedoEspaco+"</p><p>"+item.val().Local+"</p></div></br>"
+                blocos += "<div onclick=\"criaReserva('"+item.val().Chave+"')\" id='"+item.val().Chave+"'><p>"+item.val().NomedoEspaco+"</p><p>"+item.val().Local+"</p></div></br>"
             }
         });
     });
     setTimeout(function() {
-    }, 1000);
+    }, 2000);
     if (blocos === "") {
         blocos = "<h2>Não há nenhum espaço cadastrado desse tipo</h2>"
     }
