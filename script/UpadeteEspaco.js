@@ -46,17 +46,36 @@ function insereTipo(key) {
 function editaTipo(key) {
 
     var altera = document.getElementById("tipoespaco").value;
-    console.log(altera);
+    var existe = false;
+    getTipos(tipos);
 
-    firebase.database().ref('/TiposdeEspaco/'+key).update({
-        TipoEspaco: altera,
-    });
+    if(altera !== "") {
+        for (var i = 0; i < tipos.length; i++) {
+            if (tipos[i] === altera) {
+                existe = true;
+            }
+        }
+        if (!existe) {
 
-    window.alert("Atualizado com sucesso");
+            firebase.database().ref('/TiposdeEspaco/' + key).update({
+                TipoEspaco: altera,
+            });
+            getTipos(tipos);
+
+            window.alert("Atualizado com sucesso!");
+        } else {
+            window.alert("Já existe um espaço cadastrado com esse nome!");
+        }
+    }else{
+        window.alert("Tipo de Espaço não pode ser um valor nulo!")
+    }
 }
 
 function deleteTipo(key) {
     firebase.database().ref('/TiposdeEspaco/'+key).remove();
     window.alert("Tipo de espaço excluído!");
+    //atualizando página para recarregar lista de tipos cdastrados
+    window.location.reload();
+    //TODO redirecionar o usuário para a página de update de espaço
     preencheUpdateEspaco();
 }
