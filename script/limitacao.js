@@ -27,8 +27,10 @@ firebase.auth().onAuthStateChanged(function(user) {
 
 var h1 = document.getElementById("h1");
     
-    var 
-    cabecalho = "<img src='../images/logo.png' alt='logo' class='logo'>";
+    var cabecalho= "<div class='responsive-button' onclick='responsiveMenu()'>";
+    cabecalho+= "<a><span></span><span></span><span></span></a>";
+    cabecalho+= "</div>";
+    cabecalho += "<img src='../images/logo.png' alt='logo' class='logo'>";
     cabecalho+= "<a href='' class='link-header' onclick='sair()'><img src='../images/logout.png' class='logout'>Sair</a>";
 
     h1.innerHTML = cabecalho; 
