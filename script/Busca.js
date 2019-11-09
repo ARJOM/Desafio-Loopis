@@ -24,7 +24,7 @@ function preencheEspacos(key) {
 
     setTimeout(function() {
         main.innerHTML = resultado;
-    }, 1000);
+    }, 1250);
 
 
 
@@ -42,7 +42,9 @@ function filtraEspacos(key) {
             }
         });
     });
-    if (blocos===""){
+    setTimeout(function() {
+    }, 1000);
+    if (blocos === "") {
         blocos = "<h2>Não há nenhum espaço cadastrado desse tipo</h2>"
     }
     return blocos;

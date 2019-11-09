@@ -26,7 +26,7 @@ firebase.auth().onAuthStateChanged(function(user) {
     });
     setTimeout(function() {
         menu.innerHTML = opcaomenu;
-    }, 1150);
+    }, 1250);
 
 
 
