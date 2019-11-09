@@ -1,10 +1,11 @@
+//Função para listar todos os usuários cadastrados inclusive o administrador;
 function listaUser(){
     var main = document.getElementById("main");
     var resultado = "";
     resultado+="<h2>Usuários</h2>";
     resultado += "<table>";
     resultado += "<tr><th>Nome</th><th>Email</th><th>Moderador</th><th>Administrador</th></tr>"
-    //Listando Espaços na Tabela
+    //Listando todos os Usuários
     firebase.database().ref('Usuarios').on('value', function (snapshot) {
         snapshot.forEach(function (item) {
             resultado += "<tr>"
@@ -23,23 +24,17 @@ function listaUser(){
 }
 
 
-
-
+//Função para editar cada usuário individualmente;
 function editargerencia(key) {
 
     var main = document.getElementById("main");
-
     var resultado = "";
-
     resultado += "<h2>Edição de nivel de Usuário</h2>";
-
     resultado += "<form>";
-
     resultado += "<p>Nome</p>";
     resultado += "<input id='nome' disabled>";
     resultado += "<p>Email</p>";
     resultado += "<input id='email' disabled>";
-    
     resultado += "<p>Moderador</p>";
     resultado += "<select id='moderador' >";
     resultado +="<option>true</option>";
@@ -50,7 +45,6 @@ function editargerencia(key) {
     resultado +="<option>true</option>";
     resultado +="<option>false</option>";
     resultado += "</select>";
-
     resultado += "</form><br/>";
     resultado += "<button id='btn' name='Editar Nivel' onclick=\"editarNivel('"+key+"')\">Editar Nivel</button><br/>";
     resultado += "<button id='btn' name='Gerenciar Níveis' onclick='listaUser()'>Voltar para Gerenciador de Níveis </button>"
@@ -71,21 +65,19 @@ function editargerencia(key) {
 }
 
 
-
+//Função enviar dados para o banco de dados realtime;
 function editarNivel(key) {
     
     var moderador = document.getElementById("moderador").value;
     var administrador = document.getElementById("administrador").value;
     console.log(administrador);
     console.log(moderador);
-    
         //Editando no banco
         firebase.database().ref('/Usuarios/' + key).update({
             Moderador: moderador,
             Administrador: administrador,
         });
-   
         window.alert("Atualizado com sucesso!");
         editargerencia(key)
-    } 
+} 
 
