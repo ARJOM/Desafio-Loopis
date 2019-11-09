@@ -37,7 +37,7 @@ function preencheUpdate() {
     });
 
     insereEventoUpdate();
-    //insereEventoDelete();
+    insereEventoDelete();
 }
 
 // Update usuário
@@ -50,104 +50,102 @@ async function insereEventoUpdate(){
 
     Update.addEventListener('click', function () {
         if (novaSenha.value===confirmaSenha.value) {
-
+            console.log("Senhas iguias")
             var user = firebase.auth().currentUser;
             var email;
             // Definindo o email do usuário logado
             if (user != null) {
                 email = user.email;
             }
+            console.log("Email logado: "+email);
 
             firebase.database().ref('Usuarios').on('value', function (snapshot){
-                 snapshot.forEach(function (item) {
+                snapshot.forEach(function (item) {
+                    console.log("Email comparado: "+item.val().Email);
                     if (email === item.val().Email) {
 
                         //Definição das variáveis a serem utilizadas
-                        var key = Object.keys(snapshot.val())[0];
+                        var key = item.val().Chave;
+                        console.log("Chave: "+key);
                         var novoNome = document.getElementById("novoNome").value;
 
+                        var novoEmail = document.getElementById("novoEmail").value;
+
+
                         if ( novoEmail !== item.val().Email){
+                            console.log("Emails diferentes");
                             //Atualizando email na autenticação
-                            atualizaEmail(key);
+                            atualizaEmail(key, novoEmail);
                         }
+
                         //Atualizando nome no banco de dados
                         if (item.val().Nome !== novoNome && novoNome !== "") {
+                            console.log("Nomes diferentes");
+                            // console.log(novoNome)
                             firebase.database().ref('/Usuarios/'+key).update({
                                 Nome: novoNome
                             });
-                            alert("Nome atualizado")
+                            console.log("Nome atualizado")
                         }
 
                         //Atualiza senha
-                        if (novaSenha !== "") {
+                        if (novaSenha.value !== "") {
                             atualizaSenha();
                         }
                     }
                 });
             });
 
-            user.Email = document.getElementById("novoEmail").value;
-            user.Nome = document.getElementById("novoNome").value;
+            // user.Email = document.getElementById("novoEmail").value;
+            // user.Nome = document.getElementById("novoNome").value;
 
         } else{
-            alert("Senhas imcompativeis!");
+            console.log("Senhas imcompativeis!");
         }
     });
 }
 
-function updateUser() {
-    var nome, email, emailVerificado;
-    if (user != null) {
-        user.providerData.forEach(function (profile) {
-            email = profile.email;
-        });
-    }
+function insereEventoDelete() {
+    var Delete = document.getElementById("delete");
+    Delete.addEventListener('click', function () {
 
-    var main = document.getElementById("main");
-
-    // user.updateProfile({
-    //     Nome: nome,
-    // }).then(function() {
-    //     // Update successful.
-    // }).catch(function(error) {
-    //     window.alert("Nome não pôde ser atualizado")
-    // });
-
-
-
-    // preencheUpdate();
-}
-
-function deleteUser() {
-    var user = firebase.auth().currentUser;
-
-    user.delete().then(function() {
-        window.alert("Usuário removido com sucesso!")
-        window.location.href = 'login.html'
-    }).catch(function(error) {
-        window.alert("Não foi possível remover a sua conta!")
+        var user = firebase.auth().currentUser;
+        var email;
+        // Definindo o email do usuário logado
+        if (user != null) {
+            email = user.email;
+        }
+        var sure = confirm("Tem certeza que deseja excluir sua conta?");
+        if (sure) {
+            firebase.database().ref('Usuarios').on('value', function (snapshot) {
+                snapshot.forEach(function (item) {
+                    if (email === item.val().Email) {
+                        deleteUser(item.val().Chave);
+                    }
+                });
+            });
+        }
     });
-
 }
 
 // Funções auxiliares
 
-function atualizaEmail(key) {
+function atualizaEmail(key, novoEmail) {
 
-    alert("entrou na função");
-    var novoEmail = document.getElementById("novoEmail").value;
-    console.log(novoEmail);
+    console.log("entrou na função"+key);
+    console.log("Email para atualizar: "+novoEmail);
+
     var user = firebase.auth().currentUser;
-    console.log("Email logado: "+user.email);
+
+    //Atualizando email no Authentication
     user.updateEmail(novoEmail).then(function () {
         //Atualizando email no banco de dados
-        alert("atualizou")
         firebase.database().ref('/Usuarios/'+key).update({
             Email: novoEmail
         });
-        console.log("Email atualizado");
+        // console.log("Email atualizado");
     }).catch(function (error) {
-        console.log("Email não pôde ser autualizado"+error);
+        window.alert("Email não pôde ser autualizado");
     });
 
 }
@@ -155,10 +153,21 @@ function atualizaEmail(key) {
 function atualizaSenha() {
     var novaSenha = document.getElementById("novaSenha").value;
     var user = firebase.auth().currentUser;
-    user.updatePassword(novaSenha).then(function () {
-        alert("Deu certo!")
+    user.updatePassword(novaSenha).then(function (){
+        console.log("Senha atualizada!")
     }).catch(function (error) {
         window.alert("Não foi possível atualizar a sua senha!")
+    });
+
+}
+
+function deleteUser(key) {
+    var user = firebase.auth().currentUser;
+
+    user.delete().then(function () {
+        firebase.database().ref('/Usuarios/'+key).remove();
+    }).catch(function (error) {
+        window.alert("Não foi possível remover a sua conta!");
     });
 
 }

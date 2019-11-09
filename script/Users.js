@@ -1,3 +1,4 @@
+//Variaveis
 var Nome = document.getElementById("nome");
 var Email = document.getElementById("email");
 var Senha = document.getElementById("senha");
@@ -7,38 +8,44 @@ var y = false;
 
 
 
-//butões
+//Butões
 var Cadastrar = document.getElementById("cadastrar");
 var Login = document.getElementById("logar");
 
-
-//Criar conta de Email e Senha
+//Verificar se está na tela de Cadastro para não gerar conflitro.
 if(Cadastrar!=null){
-    
+
+//Função para criar conta de Email e Senha no autenticador e para cadastrar dados no realtime
     Cadastrar.addEventListener('click', function () {
         if (Senha.value==ConfirmacaodeSenha.value) {
+            var chave = firebase.database().ref().child('Usuarios').push().key;
             var Users = {
                 Nome : Nome.value,
                 Email : Email.value,
                 Moderador: y,
                 Administrador: y,
-                Ativo: x,
+                Ativo: y,
+                Chave: chave,
               };
+
         firebase
         .auth()
         .createUserWithEmailAndPassword(Email.value, Senha.value)
         .then(function() {
-            let db = firebase.database().ref().child('Usuarios').push(Users);
-            db.set(Users);
+
+            firebase.database().ref().child('Usuarios/'+chave).set(Users);
+
         alert(Email.value + " - Conta cadastrada com sucesso!");
         Nome.value="";
         Email.value="";
         Senha.value="";
         ConfirmacaodeSenha.value="";
 
+        setTimeout(function() {
+            window.location.href = "login.html";
+        }, 1000);
 
     })
-
 
     .catch(function (error) {
         // Handle Errors here.
@@ -65,15 +72,9 @@ if(Cadastrar!=null){
 }
 
 
-
-
-
-
-
-
-//Autenticar com E-mail e Senha
+//Verificar se está na tela de Login para não gerar conflitro.
 if(Login!=null){
-
+//Função que serve para autenticar com E-mail e Senha.
     Login.addEventListener('click', function () {
         
         firebase
@@ -84,6 +85,7 @@ if(Login!=null){
             alert("Logado na conta " + Email.value);
             Email.value='';
             Senha.value='';
+            //Com determinado tempo, o login feito com sucesso encaminha para o index.html.
             setTimeout(function() {
                 window.location.href = "index.html";
             }, 1000);
@@ -102,16 +104,17 @@ if(Login!=null){
     
 }
 
-
+//Função para Deslogar da conta 
 function sair(){
     alert("Você está saindo da sua conta!");
   
-    firebase.auth().signOut()
-  .then(function() {
+    firebase.auth().signOut().then(function() {
     console.log('Logout');
+    setTimeout(function() {
+        window.location.href = "login.html";
+    }, 1000);
     
   }, function(error) {
     console.error( error );
   });
-
-  }
+}
