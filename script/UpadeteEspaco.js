@@ -28,6 +28,7 @@ function insereTipo(key) {
     resultado+="<p class='text'>Tipo de Espaço</p>";
     resultado += "<input type='text' id='tipoespaco'></br>";
     resultado += "<button value='' id='btn' onclick=\"editaTipo('"+key+"')\">Atualizar Tipo de Espaço</button>";
+    resultado += "<button value='' id='btn' onclick=\"deleteTipo('"+key+"')\">Excluir Tipo de Espaço</button>";
     main.innerHTML = resultado;
 
     // Adicionando o nome atual do tipo de espaço
@@ -52,4 +53,10 @@ function editaTipo(key) {
     });
 
     window.alert("Atualizado com sucesso");
+}
+
+function deleteTipo(key) {
+    firebase.database().ref('/TiposdeEspaco/'+key).remove();
+    window.alert("Tipo de espaço excluído!");
+    preencheUpdateEspaco();
 }
