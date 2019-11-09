@@ -6,22 +6,18 @@ body {
 }
 
 .container {
+    width: 100%;
     display: grid;
     grid-template-columns: 0.8fr 3.2fr;
     grid-template-rows: 15vh 85vh;
     grid-template-areas: "header header" "left right";
 }
 
-.textocentralizado{
-    text-align: center;
-}
-
 header {
     grid-area: header;
     background: #1C1C1C;
-    grid-template-columns: 3.7fr 0.3fr;
-    display: grid;
-    grid-template-columns: 3.7fr 0.3fr;
+    display: flex;
+    justify-content: space-between;
 }
 
 .left {
@@ -31,8 +27,6 @@ header {
 
 .right {
     grid-area: right;
-    margin: 5px 0 0 3px;
-    border-radius: 5px;
     padding: 20px;
     background: #FFFAF0;
 }
@@ -91,8 +85,6 @@ header {
 
 .buscar {
     padding: 10px;
-    display: flex;
-    justify-content: center;
 }
 
 p {
@@ -107,11 +99,7 @@ p {
     margin: 0 10px;
 }
 
-.content {
-    margin: 0 15px;
-}
-
-#btn {
+.btn {
     border: none;
     background-color: #008B45;
     color: white;
@@ -120,36 +108,55 @@ p {
     width: 100px;
     text-transform: uppercase;
     font-family: 'Open Sans Condensed', sans-serif;
-    font-weight: bold;
-    margin-top: 20px;
-    border-left-width: medium;
-    margin-left: 20px;
+    margin-left: 5px;
     text-decoration: none;
+    padding: 10px;
 }
 
-#btn:hover {
+.btn:hover {
     cursor: pointer;
 }
 
-@media screen and (max-width:400px) {
-    .buscar {
-        flex-wrap: wrap;
-    }
 
-    .reserva {
-        flex-wrap: wrap;
-        margin: 10px auto;
-        justify-content: flex-start;
-    }
+#tipoespaco {
+    padding: 10px;
+}
 
-    .content {
-        margin: 0;
-    }
+.textocentralizado{
+    text-align: center;
+    font-family: 'Open Sans Condensed', sans-serif;
+    text-transform: uppercase;
+}
 
-    #btn {
-        margin-top: 5px;
-    }
+.espaco {
+    padding-left: 400px;
+    padding-top: 30px;
+}
 
+.botoes {
+    margin-left: 400px;
+}
+
+.espaco input {
+    padding: 5px;
+    border: none;
+    border-bottom: 1px solid #008B45;
+    margin-bottom: 25px;
+    width: 250px;
+}
+
+#ListadeTipodeEspaco {
+    margin-bottom: 30px;
+}
+
+.buscar-box {
+    display: flex;
+    justify-content: center;
+}
+
+.buscar-box .botoes {
+    margin-left: 5px;
+    padding-top: 35px;
 }
 
 /* Estilizando tela de atualização de usuário */
@@ -243,6 +250,36 @@ p {
 
 @media screen and (max-width: 400px) {
 
+    /*telas de filtragem*/
+
+    .buscar {
+        padding: 0;
+    }
+
+    .btn {
+        margin-top: 5px;
+        width: 80px;
+        font-size: 12px;
+    }
+
+    .right {
+        padding: 0;
+    }
+
+    .espaco {
+        padding-left: 0;
+        padding-top: 30px;
+    }
+
+    .botoes {
+        margin-left: 5px;
+        margin-top: 15px;
+    }
+
+    .buscar-box {
+        flex-wrap: wrap;
+    }
+    
     /*botão pra esconder menu lateral */
 
     #menu {
