@@ -11,7 +11,9 @@ firebase.auth().onAuthStateChanged(function(user) {
     opcaomenu+="<li><a onclick='preencheUpdate()' href='#' class='link-left'>Minha Conta</a></li>";
     opcaomenu+="<li><a onclick='preencheCadastroTipo()' href='#' class='link-left'>Cadastrar Tipos de Espaços</a></li>";
     opcaomenu+="<li><a onclick='preencheCadastroEspaco()' href='#' class='link-left'>Cadastrar Espaços</a></li>";
+    
     opcaomenu+="<li><a onclick='listaUser()' href='#' class='link-left'>Gerenciamento de Níveis de Usuários</a></li>";
+    opcaomenu+="<li><a onclick='listaUserReserva()' href='#' class='link-left'>Gerenciamento Status de Usuários</a></li>";
     opcaomenu+="<li><a href='#' class='link-left'>Minhas Reservas</a></li>";
     opcaomenu+="<li><a onclick='preencheUpdateTipoEspaco()' href='#'>Editar Tipos de Espaço</a> </li>";
     opcaomenu+="<li><a onclick='preencheUpdateEspaco()' href='#'>Editar Espaço</a> </li>";
