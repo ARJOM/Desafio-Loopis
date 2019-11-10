@@ -251,7 +251,6 @@ p {
 /* botão pra fechar e abrir menu lateral */
 
 #menu {
-    width: 0;
     height: 85vh;
     background-color: #1C1C1C;
     transition: all 500ms linear;
@@ -259,6 +258,10 @@ p {
 
 #menu.active {
     width: 250px;
+}
+
+#menu.unactive {
+    width: 0;
 }
 
 .responsive-button {
@@ -275,17 +278,6 @@ p {
     background-color: white;
     margin: 5px 0;
 } 
-
-.responsive-button::after {
-    content: "MENU";
-    position: absolute;
-    bottom: 5px;
-    left: 30px;
-    margin: 0 3px;
-    font-family: 'Open Sans Condensed', sans-serif;
-    color: white;
-    font-size: 20px;
-}
 
 .responsive-button:hover {
     cursor: pointer;
@@ -354,5 +346,9 @@ p {
 
     .logo {
         margin-left: 130px;
+    }
+    
+    #menu {
+        width: 0;
     }
 }
