@@ -3,8 +3,9 @@ function preencheUpdateTipoEspaco() {
 
     var main = document.getElementById("main");
 
-    var resultado = "";
+    var resultado = "<div class='tipos-box'>";
     resultado+="<h2>alterando tipos</h2>";
+    resultado+= "<div class='tipos-content'>";
     //Listando tipos de espaço
     firebase.database().ref('TiposdeEspaco').on('value', function (snapshot) {
         snapshot.forEach(function (item) {
@@ -12,7 +13,7 @@ function preencheUpdateTipoEspaco() {
             resultado += "<a onclick=\"insereTipo('"+item.val().Chave+"')\" href='#'>";
             resultado += item.val().TipoEspaco;
             resultado +="</a>";
-            resultado += "</br>";
+            resultado += "</div></div>";
         });
     });
     setTimeout(function() {
@@ -25,13 +26,15 @@ function insereTipo(key) {
 
     var main = document.getElementById("main");
 
-    var resultado = "";
+    var resultado = "<div class='tipos-box'>";
 
     resultado+="<h2>alterando tipo</h2>";
+    resultado+="<div class='tipos-content2'>";
     resultado+="<p class='text'>Tipo de Espaço</p>";
-    resultado += "<input type='text' id='tipoespaco'></br>";
-    resultado += "<button value='' id='btn' onclick=\"editaTipo('"+key+"')\">Atualizar Tipo de Espaço</button>";
-    resultado += "<button value='' id='btn' onclick=\"deleteTipo('"+key+"')\">Excluir Tipo de Espaço</button>";
+    resultado += "<input type='text' id='tipoespaco'>";
+    resultado += "<a class='btn' onclick=\"editaTipo('"+key+"')\">Atualizar Tipo de Espaço</a>";
+    resultado += "<a class='btn' onclick=\"deleteTipo('"+key+"')\">Excluir Tipo de Espaço</a>";
+    resultado += "</div></div>";
     main.innerHTML = resultado;
 
     // Adicionando o nome atual do tipo de espaço
