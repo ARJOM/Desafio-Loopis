@@ -67,6 +67,7 @@ function registrarReserva(espacoKey) {
                         HoradeEntrega: horadeentrega,
                         Espaco: espaco,
                         Chave: chave,
+                        Status: "false",
                     };
 
                     firebase.database().ref().child('Reserva/' + chave).set(Reserva);
