@@ -1,6 +1,6 @@
 //Variaveis
 var Nome = document.getElementById("nome");
-var Email = document.getElementById("email");
+var EmailNaoTratado = document.getElementById("email");
 var Senha = document.getElementById("senha");
 var ConfirmacaodeSenha = document.getElementById("senhaconfirmar");
 var x = "true";
@@ -18,10 +18,13 @@ if(Cadastrar!=null){
 //Função para criar conta de Email e Senha no autenticador e para cadastrar dados no realtime
     Cadastrar.addEventListener('click', function () {
         if (Senha.value==ConfirmacaodeSenha.value) {
+            var Minusculo = EmailNaotratado.value;
+            var Email = Minusculo.toLowerCase();
+
             var chave = firebase.database().ref().child('Usuarios').push().key;
             var Users = {
                 Nome : Nome.value,
-                Email : Email.value,
+                Email : Email,
                 Moderador: y,
                 Administrador: y,
                 Ativo: y,
@@ -30,14 +33,14 @@ if(Cadastrar!=null){
 
         firebase
         .auth()
-        .createUserWithEmailAndPassword(Email.value, Senha.value)
+        .createUserWithEmailAndPassword(EmailNaotratado.value, Senha.value)
         .then(function() {
 
             firebase.database().ref().child('Usuarios/'+chave).set(Users);
 
-        alert(Email.value + " - Conta cadastrada com sucesso!");
+        alert(EmailNaotratado.value + " - Conta cadastrada com sucesso!");
         Nome.value="";
-        Email.value="";
+        EmailNaotratado.value="";
         Senha.value="";
         ConfirmacaodeSenha.value="";
 
@@ -53,7 +56,7 @@ if(Cadastrar!=null){
         console.error(error.message);
         firebase.database().ref('Usuários').on('value', function (snapshot){
             snapshot.forEach(function (item){ 
-        if(Email.value==item.val().Email){
+        if(EmailNaotratado.value==item.val().Email){
             alert("Esse email já foi usado em uma conta cadastrada no Sr."); 
         }
         else{
@@ -79,11 +82,11 @@ if(Login!=null){
         
         firebase
         .auth()
-        .signInWithEmailAndPassword(Email.value, Senha.value)
+        .signInWithEmailAndPassword(EmailNaotratado.value, Senha.value)
         .then(function(result) {
             console.log(result);
-            alert("Logado na conta " + Email.value);
-            Email.value='';
+            alert("Logado na conta " + EmailNaotratado.value);
+            EmailNaotratado.value='';
             Senha.value='';
             //Com determinado tempo, o login feito com sucesso encaminha para o index.html.
             setTimeout(function() {
