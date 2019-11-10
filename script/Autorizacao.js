@@ -4,10 +4,10 @@ function listaUserReserva(){
     var email = user.email;
     var main = document.getElementById("main");
     var resultado = "<div class='user-table'>";
-    resultado+="<h2>Usuários cadastrados</h2>";
+    resultado+="<h2>Status de Usuários Para Reserva</h2>";
     resultado += "<table>";
     resultado += "<tr><th>Nome</th><th>Email</th><th>Ativo</th></tr>"
-    //Listando todos os Usuários
+    //Listando todos os Usuários menos o atual moderador logado.
     firebase.database().ref('Usuarios').on('value', function (snapshot) {
         snapshot.forEach(function (item) {
             if(email!=item.val().Email){
