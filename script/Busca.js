@@ -35,7 +35,7 @@ function filtraEspacos(key) {
             console.log(item.val().TipoEspaco);
             if (item.val().TipoEspaco === key){
                 console.log("Entrou")
-                blocos += "<div onclick=\"criaReserva('"+item.val().Chave+"')\" id='"+item.val().Chave+"'><p>"+item.val().NomedoEspaco+"</p><p>"+item.val().Local+"</p></div></br>"
+                blocos += "<div onclick=\"registrarReserva('"+item.val().Chave+"')\" id='"+item.val().Chave+"'><p>"+item.val().NomedoEspaco+"</p><p>"+item.val().Local+"</p></div></br>"
             }
         });
     });
