@@ -20,7 +20,6 @@ if(Cadastrar!=null){
         if (Senha.value==ConfirmacaodeSenha.value) {
             var Minusculo = EmailNaotratado.value;
             var Email = Minusculo.toLowerCase()
-
             var chave = firebase.database().ref().child('Usuarios').push().key;
             var Users = {
                 Nome : Nome.value,
