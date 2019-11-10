@@ -159,6 +159,17 @@ p {
     padding-top: 35px;
 }
 
+.titlePaginaI{
+    text-align: center;
+    font-family: 'Open Sans Condensed', sans-serif;
+}
+
+.textPaginaI{
+    margin: 80px;
+    line-height: 1.8;
+    font-size: 20px;
+    text-align: justify;
+}
 /* Estilizando tela de atualização de usuário */
 
 .update h2 {
