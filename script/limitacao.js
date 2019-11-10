@@ -12,73 +12,38 @@ var opcaomenu = "<div class='menu-left' ><ul>";
     firebase.database().ref('Usuarios').on('value', function (snapshot) {
         snapshot.forEach(function (item) {
             //Função para menu Administrador
-            if((email===item.val().Email) && (item.val().Administrador==="true") ){
-                opcaomenu+="<li><a href='index.html' class='link-left'>Página Inicial</a></li>"
-                opcaomenu+="<li><a onclick='preencheUpdate();closeMenu();' href='#' class='link-left'>Minha Conta</a></li>";
-                opcaomenu+="<li><a onclick='listaUser();closeMenu();' href='#' class='link-left'>Gerenciamento de Níveis de Usuários</a></li>";
-                opcaomenu+="<li><a onclick='preencheCadastroTipo();closeMenu();' href='#' class='link-left'>Cadastrar Tipos de Espaços</a></li>";
-                opcaomenu+="<li><a onclick='preencheUpdateTipoEspaco();closeMenu();' href='#'>Editar Tipos de Espaço</a> </li>";
-                opcaomenu+="<li><a onclick='preencheCadastroEspaco();closeMenu();' href='#' class='link-left'>Cadastrar Espaços</a></li>";
-                opcaomenu+="<li><a onclick='preencheUpdateEspaco();closeMenu();' href='#'>Editar Espaço</a> </li>";
-                opcaomenu+="<li><a onclick='MinhasReservas();closeMenu();' href='#' class='link-left' >Minhas Reservas</a></li>";
-                opcaomenu+="<li class='dropdown-left'><a href='#'> Novas Reservas</a>";
-                opcaomenu+= "<ul class='dropdown1'>";
-                firebase.database().ref('TiposdeEspaco').on('value', function (snapshot) {
-                    snapshot.forEach(function (item) {
-                        console.log(item.val().TipoEspaco);
-                        opcaomenu += "<li><a onclick=\"preencheEspacos('"+item.val().Chave+"');closeMenu();\" href='#' class='link-left'>"+item.val().TipoEspaco+"</a></li>";
-                    });
-                });
-                opcaomenu += "</ul>";
-                opcaomenu += "</li>";
-                
-            }
-            //Função para menu Moderador
-            else if ((email===item.val().Email) && (item.val().Moderador==="true")){
-                opcaomenu+="<li><a href='index.html' class='link-left'>Página Inicial</a></li>"
-                opcaomenu+="<li><a onclick='preencheUpdate();closeMenu();' href='#' class='link-left'>Minha Conta</a></li>";
-                opcaomenu+="<li><a onclick='listaUserReserva();closeMenu();' href='#' class='link-left'>Gerenciamento Status de Usuários</a></li>";
-                opcaomenu+="<li><a onclick='preencheCadastroTipo();closeMenu();' href='#' class='link-left'>Cadastrar Tipos de Espaços</a></li>";
-                opcaomenu+="<li><a onclick='preencheUpdateTipoEspaco();closeMenu();' href='#'>Editar Tipos de Espaço</a> </li>";
-                opcaomenu+="<li><a onclick='preencheCadastroEspaco();closeMenu();' href='#' class='link-left'>Cadastrar Espaços</a></li>";
-                opcaomenu+="<li><a onclick='preencheUpdateEspaco();closeMenu();' href='#'>Editar Espaço</a> </li>";
-                opcaomenu+="<li><a onclick='MinhasReservas();closeMenu();' href='#' class='link-left'>Minhas Reservas</a></li>";
-                opcaomenu+="<li class='dropdown-left'><a href='#'> Novas Reservas</a>";
-                opcaomenu+= "<ul class='dropdown1'>";
-                firebase.database().ref('TiposdeEspaco').on('value', function (snapshot) {
-                    snapshot.forEach(function (item) {
-                        console.log(item.val().TipoEspaco);
-                        opcaomenu += "<li><a onclick=\"preencheEspacos('"+item.val().Chave+"');closeMenu();\" href='#' class='link-left'>"+item.val().TipoEspaco+"</a></li>";
-                    });
-                });
-                opcaomenu += "</ul>";
-                opcaomenu += "</li>";
-           
-            }
-
-            //Função para menu de ativo a reserva
-            else if ((email===item.val().Email) && (item.val().Ativo==="true")){
-
-                opcaomenu+="<li><a href='index.html' class='link-left'>Página Inicial</a></li>"
-                opcaomenu+="<li><a onclick='preencheUpdate();closeMenu();' href='#' class='link-left'>Minha Conta</a></li>";
-                opcaomenu+="<li><a href='#' class='link-left'>Minhas Reservas</a></li>";
-                opcaomenu+="<li class='dropdown-left'><a href='#'> Novas Reservas</a>";
-                opcaomenu+= "<ul class='dropdown1'>";
-                firebase.database().ref('TiposdeEspaco').on('value', function (snapshot) {
-                    snapshot.forEach(function (item) {
-                        console.log(item.val().TipoEspaco);
-                        opcaomenu += "<li><a onclick=\"preencheEspacos('"+item.val().Chave+"');closeMenu();\" href='#' class='link-left'>"+item.val().TipoEspaco+"</a></li>";
-                    });
-                });
-                opcaomenu += "</ul>";
-                opcaomenu += "</li>";
-            }
-            else if((email===item.val().Email) && (item.val().Ativo==="false")){
+            if(email===item.val().Email){
                 opcaomenu+="<li><a href='index.html' class='link-left'>Página Inicial</a></li>"
                 opcaomenu+="<li><a onclick='preencheUpdate();closeMenu();' href='#' class='link-left'>Minha Conta</a></li>";
                 opcaomenu+="<li><a onclick='MinhasReservas();closeMenu();' href='#' class='link-left' >Minhas Reservas</a></li>";
+
+
+                if(item.val().Administrador==="true"){
+                    opcaomenu+="<li><a onclick='listaUser();closeMenu();' href='#' class='link-left'>Gerenciamento de Níveis de Usuários</a></li>";
+                    opcaomenu+="<li><a onclick='preencheCadastroTipo();closeMenu();' href='#' class='link-left'>Cadastrar Tipos de Espaços</a></li>";
+                    opcaomenu+="<li><a onclick='preencheUpdateTipoEspaco();closeMenu();' href='#'>Editar Tipos de Espaço</a> </li>";
+                    opcaomenu+="<li><a onclick='preencheCadastroEspaco();closeMenu();' href='#' class='link-left'>Cadastrar Espaços</a></li>";
+                    opcaomenu+="<li><a onclick='preencheUpdateEspaco();closeMenu();' href='#'>Editar Espaço</a> </li>";
+                }
+                //Função para menu Moderador
+                if (item.val().Moderador==="true"){
+                    // Adicionar funções do moderador
+                }
+
+                //Função para menu de ativo a reserva
+                if (item.val().Ativo==="true"){
+                    opcaomenu+="<li class='dropdown-left'><a href='#'> Novas Reservas</a>";
+                    opcaomenu+= "<ul class='dropdown1'>";
+                    firebase.database().ref('TiposdeEspaco').on('value', function (snapshot) {
+                        snapshot.forEach(function (item) {
+                            console.log(item.val().TipoEspaco);
+                            opcaomenu += "<li><a onclick=\"preencheEspacos('"+item.val().Chave+"');closeMenu();\" href='#' class='link-left'>"+item.val().TipoEspaco+"</a></li>";
+                        });
+                    });
+                    opcaomenu += "</ul>";
+                    opcaomenu += "</li>";
+                }
             }
-          
             /*
             opcaomenu+="<li><a href='index.html' class='link-left'>Página Inicial</a></li>"
             opcaomenu+="<li><a onclick='preencheUpdate()' href='#' class='link-left'>Minha Conta</a></li>";
