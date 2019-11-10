@@ -2,7 +2,7 @@ function preencheEspacos(key) {
 
     var main = document.getElementById("main");
 
-    var resultado = "<div class=\"buscar\">";
+    var resultado = "<div class=\"buscar-espaco\">";
     resultado+="<form class='reserva'>";
     resultado+="<div class=\"content\">";
     resultado+="<p class=\"text\">Data da reserva: </p>";
@@ -17,7 +17,7 @@ function preencheEspacos(key) {
     resultado+="<input type=\"time\" id=\"hora-entrega\" min=\"07:00\" max=\"22:00\" required>";
     resultado+="</div>";
     resultado+="</form>\n";
-    resultado+="<input type=\"submit\" value=\"filtrar\" id=\"btn\">";
+    resultado+="<a class='btn'>filtrar</a>";
     resultado+="</div>";
 
     resultado += filtraEspacos(key);

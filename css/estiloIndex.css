@@ -87,6 +87,17 @@ header {
     padding: 10px;
 }
 
+.buscar-espaco {
+    display: flex;
+    justify-content: center;
+}
+
+.buscar-espaco .btn {
+    width: 70px;
+    text-align: center;
+    margin: 10px 0;
+}
+
 p {
     font-family: 'Open Sans Condensed', sans-serif;
     margin: 0 0 5px 0;
@@ -95,8 +106,12 @@ p {
 
 .reserva {
     display: flex;
-    justify-content: space-around;
-    margin: 0 10px;
+    flex-wrap: wrap;
+   
+}
+
+.reserva .content {
+    margin: 0 20px;
 }
 
 .btn {
@@ -159,6 +174,17 @@ p {
     padding-top: 35px;
 }
 
+.titlePaginaI{
+    text-align: center;
+    font-family: 'Open Sans Condensed', sans-serif;
+}
+
+.textPaginaI{
+    margin: 80px;
+    line-height: 1.8;
+    font-size: 20px;
+    text-align: justify;
+}
 /* Estilizando tela de atualização de usuário */
 
 .update h2 {
