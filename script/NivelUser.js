@@ -28,7 +28,7 @@ function listaUser(){
 //Função para editar cada usuário individualmente;
 function editargerencia(key){
     var main = document.getElementById("main");
-    var resultado = "";
+    var resultado = "<div class='user-status-box'>";
     resultado += "<h2>Edição de nivel de Usuário</h2>";
     resultado += "<form>";
     resultado += "<p>Nome</p>";
@@ -48,8 +48,10 @@ function editargerencia(key){
     resultado +="<option>false</option>";
     resultado += "</select>";
     resultado += "</form><br/>";
-    resultado += "<button id='btn' name='Editar Nivel' onclick=\"editarNivel('"+key+"')\">Editar Nivel</button><br/>";
-    resultado += "<button id='btn' name='Gerenciar Níveis' onclick='listaUser()'>Voltar para Gerenciador de Níveis </button>"
+    resultado += "<div class='botoes'>";
+    resultado += "<a class='btn' name='Editar Nivel' onclick=\"editarNivel('"+key+"')\">Editar Nivel</a>";
+    resultado += "<a class='btn' name='Gerenciar Níveis' onclick='listaUser()'>Voltar para Gerenciador de Níveis </a>";
+    resultado += "</div></div>";
     main.innerHTML = resultado;
 
 

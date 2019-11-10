@@ -2,7 +2,7 @@
 function listaUserReserva(){
     var main = document.getElementById("main");
     var resultado = "<div class='user-table'>";
-    resultado+="<h2>Usuários</h2>";
+    resultado+="<h2>Usuários cadastrados</h2>";
     resultado += "<table>";
     resultado += "<tr><th>Nome</th><th>Email</th><th>Ativo</th></tr>"
     //Listando todos os Usuários
@@ -26,7 +26,7 @@ function listaUserReserva(){
 function editargerenciaReserva(key){
 
     var main = document.getElementById("main");
-    var resultado = "";
+    var resultado = "<div class='user-status-box'>";
     resultado += "<h2>Edição de Status de Usuário</h2>";
     resultado += "<form>";
     resultado += "<p>Nome</p>";
@@ -40,8 +40,10 @@ function editargerenciaReserva(key){
     resultado += "</select>";
     resultado += "</select>";
     resultado += "</form><br/>";
-    resultado += "<button id='btn' name='Editar Nivel' onclick=\"editarNiveldeReserva('"+key+"')\">Editar Status</button><br/>";
-    resultado += "<button id='btn' name='Gerenciar Níveis' onclick='listaUserReserva()'>Voltar para Status de Usuários</button>"
+    resultado += "<div class='botoes'>";
+    resultado += "<a class='btn' name='Editar Nivel' onclick=\"editarNiveldeReserva('"+key+"')\">Editar Status</a>";
+    resultado += "<a class='btn' name='Gerenciar Níveis' onclick='listaUserReserva()'>Voltar para Status de Usuários</a>";
+    resultado += "</div></div>";
     main.innerHTML = resultado;
 
 

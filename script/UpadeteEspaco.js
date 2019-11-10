@@ -92,7 +92,7 @@ function preencheUpdateEspaco() {
 
     var main = document.getElementById("main");
 
-    var resultado = "";
+    var resultado = "<div class='user-table'>";
     resultado+="<h2>alterando espaços</h2>";
     resultado += "<table>";
     resultado += "<tr><th>Nome</th><th>Local</th><th>Capacidade</th></tr>"
@@ -108,6 +108,7 @@ function preencheUpdateEspaco() {
     });
     setTimeout(function() {
         resultado += "</table>";
+        resultado += "</div>";
         main.innerHTML = resultado;
     }, 1000);
 }
@@ -116,7 +117,7 @@ function insereEspaco(key) {
 
     var main = document.getElementById("main");
 
-    var resultado = "";
+    var resultado = "<div class='user-status-box'>";
 
     resultado += "<h2>Edição de Espaço</h2>";
 
@@ -132,9 +133,10 @@ function insereEspaco(key) {
     resultado += "<input id='capacidade'>";
 
     resultado += "</form><br/>";
-    resultado += "<button id='btn' name='editarEspaco' onclick=\"editaEspaco('"+key+"')\">Editar Espaço</button>";
-    resultado += "<button id='btn' name='deletarEspaco' onclick=\"deleteEspaco('"+key+"')\">Deletar Espaço</button>";
-
+    resultado += "<div class='botoes-espaco'>";
+    resultado += "<a class='btn' name='editarEspaco' onclick=\"editaEspaco('"+key+"')\">Editar Espaço</a>";
+    resultado += "<a class='btn' name='deletarEspaco' onclick=\"deleteEspaco('"+key+"')\">Deletar Espaço</a>";
+    resultado += "</div></div>";
     main.innerHTML = resultado;
 
     selcionarOption();
