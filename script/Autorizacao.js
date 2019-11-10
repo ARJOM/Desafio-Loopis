@@ -1,5 +1,7 @@
 //Função para listar todos os usuários cadastrados ativo ou não para cadastro inclusive o moderador;
 function listaUserReserva(){
+    var user = firebase.auth().currentUser;
+    var email = user.email;
     var main = document.getElementById("main");
     var resultado = "<div class='user-table'>";
     resultado+="<h2>Usuários cadastrados</h2>";
@@ -8,11 +10,13 @@ function listaUserReserva(){
     //Listando todos os Usuários
     firebase.database().ref('Usuarios').on('value', function (snapshot) {
         snapshot.forEach(function (item) {
+            if(email!=item.val().Email){
             resultado += "<tr>"
             resultado += "<td><a onclick=\"editargerenciaReserva('"+item.val().Chave+"')\" href='#'>"+ item.val().Nome +"</a></td>";
             resultado += "<td>"+ item.val().Email +"</td>";
             resultado += "<td>"+ item.val().Ativo +"</td>";
             resultado += "</tr>";
+            }
         });
     });
     setTimeout(function() {
@@ -70,5 +74,6 @@ function editarNiveldeReserva(key){
         });
         window.alert("Atualizado com sucesso!");
         editargerenciaReserva(key)
+        abrir();
 } 
 
