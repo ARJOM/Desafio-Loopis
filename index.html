@@ -4,65 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Página Teste</title>
-    <style> 
-        body {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%
+    <link rel="stylesheet" href="..//css/estiloIndex.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Staatliches&display=swap" rel="stylesheet">
+    <script type="text/javascript">
+        window.onload = function(){
+            abrir()
         }
-        .dashboard {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-        }
-        .dash-top {
-            width: 100vw;
-            height: 100px;
-            border-bottom: 2px solid black;
-        }
-        .dash-left {
-            width: 250px;
-            height: 85vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-around;
-            border-right: 2px solid black;
-        }
-        .dash-left a {
-            margin: 0 auto;
-        }
-        .dash-right {
-            width: 79vw;
-            height: 85vh;
-        }
-        
-    </style>
-    <!--Esse Css é só pra servir de base mesmo -->
+        </script>
+    <title>Sr.- Usuário</title>
 </head>
 <body>
-    <div class="dashboard">
-        <div class="dash-top"></div>
-        <div class="dash-left">
-            <a onclick="" href="html/login.html">Login</a>
-            <a onclick="" href="html/cadastro.html">Cadastro</a>
-            <a  href="html/CadastroTipodeEspaco.html">Cadastro de Tipo</a>
-        </div>
-        <div class="dash-right"></div>
+    <div class="container">
+        <header id="h1">
+        </header>
+
+        <section id="menu"class="left">
+        </section>
+        <section id="main" class="right">
+        </section>
     </div>
 
-<!-- The core Firebase JS SDK is always required and must be listed first -->
-<script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-app.js"></script>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-app.js"></script>
 
-<!-- TODO: Add SDKs for Firebase products that you want to use
-https://firebase.google.com/docs/web/setup#config-web-app -->
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+    https://firebase.google.com/docs/web/setup#config-web-app -->
 
-<script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-auth.js"></script>
-<script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-database.js"></script> 
-<script src="script/Firebase.js"></script>
-
+    <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-database.js"></script>
+    <script src="script/Firebase.js"></script>
+    <script src="script/Users.js"></script>
+    <script src="script/UpadteUser.js"></script>
+    <script src="script/Espacos.js"></script>
+    <script src="script/Limitacao.js"></script>
+    <script src="script/Busca.js"></script>
+    <script src="script/UpadeteEspaco.js"></script>
+    <script src="script/responsive-menu.js"></script>
+    <script src="script/NivelUser.js"></script>
+    <script src="script/Reserva.js"></script>
+    <script src="script/Autorizacao.js"></script>
+    
 </body>
 </html>

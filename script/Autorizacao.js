@@ -1,4 +1,4 @@
-//Função para listar todos os usuários cadastrados inclusive o administrador;
+//Função para listar todos os usuários cadastrados ativo ou não para cadastro inclusive o moderador;
 function listaUserReserva(){
     var main = document.getElementById("main");
     var resultado = "";
@@ -39,7 +39,7 @@ function editargerenciaReserva(key){
     resultado += "</select>";
     resultado += "</select>";
     resultado += "</form><br/>";
-    resultado += "<button id='btn' name='Editar Nivel' onclick=\"editarNiveldeReserva('"+key+"')\">Editar Nivel</button><br/>";
+    resultado += "<button id='btn' name='Editar Nivel' onclick=\"editarNiveldeReserva('"+key+"')\">Editar Status</button><br/>";
     resultado += "<button id='btn' name='Gerenciar Níveis' onclick='listaUserReserva()'>Voltar para Status de Usuários</button>"
     main.innerHTML = resultado;
 

@@ -36,11 +36,13 @@ function editargerencia(key){
     resultado += "<input id='email' disabled>";
     resultado += "<p>Moderador</p>";
     resultado += "<select id='moderador' >";
+    resultado +="<option value='null'></option>";
     resultado +="<option>true</option>";
     resultado +="<option>false</option>";
     resultado += "</select>";
     resultado += "<p>Administrador</p>";
     resultado += "<select id='administrador' >";
+    resultado +="<option value='null'></option>";
     resultado +="<option>true</option>";
     resultado +="<option>false</option>";
     resultado += "</select>";
@@ -68,15 +70,32 @@ function editargerencia(key){
 function editarNivel(key){
     
     var ModeradorNovo = document.getElementById("moderador").value;
-    var administradorNovo = document.getElementById("administrador").value;
-    console.log(administrador);
-    console.log(moderador);
+    var AdministradorNovo = document.getElementById("administrador").value;
+    //Não aceita ocupar duas funções
+    if((AdministradorNovo==="true") && (ModeradorNovo==="true")){
+        alert("O Usuário não pode ser Administrador e Moderador ao mesmo tempo.")
+
+        document.getElementById("moderador").value=null;
+        document.getElementById("administrador").value=null;
+
+        //AdministradorNovo.innerHTML.value="null";
+      //  AdministradorNovo.innerHTML.value="null";
+        editarNivel(key);
+    }
+    //Igual a null, avisa!
+    if((document.getElementById("moderador").value=="null") || (document.getElementById("administrador").value=="null")){
+        alert("Aplique um valor para o(s) campo(s) em branco.");
+    }
+    //se tudo ok, entra!
+    else{
         //Editando no banco
         firebase.database().ref('/Usuarios/' + key).update({
             Moderador: ModeradorNovo,
-            Administrador: administradorNovo,
+            Administrador: AdministradorNovo,
         });
         window.alert("Atualizado com sucesso!");
-        editargerencia(key)
+        editargerencia(key);
+        abrir()
+    }
 } 
 
