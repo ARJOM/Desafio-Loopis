@@ -81,6 +81,8 @@ function registrarReserva(espacoKey) {
         horadeentrega = document.getElementById('hora-entrega').value = "";
         // espaco = document.getElementById('Espaco').value=null;
         abrir();
+    } else{
+        window.alert("Horário inválido");
     }
 }
 
