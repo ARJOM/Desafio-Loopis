@@ -1,8 +1,8 @@
 //Função para listar todos os usuários cadastrados inclusive o administrador;
 function listaUser(){
     var main = document.getElementById("main");
-    var resultado = "";
-    resultado+="<h2>Usuários</h2>";
+    var resultado = "<div class='user-table'>";
+    resultado+="<h2>usuários cadastrados</h2>";
     resultado += "<table>";
     resultado += "<tr><th>Nome</th><th>Email</th><th>Moderador</th><th>Administrador</th></tr>"
     //Listando todos os Usuários
@@ -18,6 +18,7 @@ function listaUser(){
     });
     setTimeout(function() {
         resultado += "</table>";
+        resultado += "</div>";
         main.innerHTML = resultado;
     }, 1000);
 
