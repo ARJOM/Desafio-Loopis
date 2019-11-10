@@ -388,3 +388,18 @@ p {
     text-transform: uppercase;
     font-family: 'Open Sans Condensed', sans-serif;
 }
+
+.tipos-box h2 {
+    text-align: center;
+    text-transform: uppercase;
+    font-family: 'Open Sans Condensed', sans-serif;
+}
+
+.tipos-content a {
+    color: black;
+    text-decoration: none;
+}
+
+.tipos-content2 {
+    padding-left: 250px;
+}
