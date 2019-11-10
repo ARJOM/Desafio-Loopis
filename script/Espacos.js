@@ -44,7 +44,7 @@ function preencheCadastroEspaco(){
 
     main.innerHTML = resultado;
 
-    abrir();
+    carregarSelect();
 
 }
 
@@ -89,7 +89,7 @@ function RegistrarTiposdeEspacos(){
     }
 }
 
-function abrir(){
+function carregarSelect(){
     firebase.database().ref('TiposdeEspaco').on('value', function (snapshot){
         snapshot.forEach(function (item){ 
         var Option = document.createElement("option");

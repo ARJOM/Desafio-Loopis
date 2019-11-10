@@ -113,7 +113,7 @@ function sair(){
     firebase.auth().signOut().then(function() {
     console.log('Logout');
     setTimeout(function() {
-        window.location.href = "login.html";
+        window.location.href = "html/login.html";
     }, 1000);
     
   }, function(error) {

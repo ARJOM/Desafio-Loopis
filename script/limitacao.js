@@ -107,8 +107,8 @@ var h1 = document.getElementById("h1");
     var cabecalho= "<div class='responsive-button' onclick='responsiveMenu()'>";
     cabecalho+= "<a><span></span><span></span><span></span></a>";
     cabecalho+= "</div>";
-    cabecalho += "<img src='../images/logo.png' alt='logo' class='logo'>";
-    cabecalho+= "<a href='' class='link-header' onclick='sair()'><img src='../images/logout.png' class='logout'>Sair</a>";
+    cabecalho += "<img src='images/logo.png' alt='logo' class='logo'>";
+    cabecalho+= "<a href='' class='link-header' onclick='sair()'><img src='images/logout.png' class='logout'>Sair</a>";
 
     h1.innerHTML = cabecalho; 
         
@@ -120,7 +120,7 @@ var h1 = document.getElementById("h1");
 
     } else {
       alert("Você não está autenticado, precisa fazer o login para entrar!");
-        window.location.href = "../html/login.html";
+        window.location.href = "html/login.html";
         
     }
   });
