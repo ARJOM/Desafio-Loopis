@@ -134,7 +134,7 @@ p {
 }
 
 .botoes {
-    margin-left: 400px;
+    margin-left: 390px;
 }
 
 .espaco input {
@@ -415,4 +415,29 @@ p {
 
 .tipos-content2 {
     padding-left: 250px;
+}
+
+.user-status-box {
+    margin-top: 50px;
+}
+
+.user-status-box h2 {
+    font-family: 'Open Sans Condensed', sans-serif;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.user-status-box form {
+    padding: 10px;
+    margin-left: 400px;
+}
+
+.user-status-box form input {
+    padding: 5px;    
+    margin: 5px 0;
+    width: 200px;
+}
+
+.botoes-espaco {
+    margin-left: 415px;
 }
