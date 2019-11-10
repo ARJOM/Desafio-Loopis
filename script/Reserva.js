@@ -53,7 +53,7 @@ function registrarReserva(espacoKey) {
     var horadeentrega = document.getElementById("hora-entrega").value;
 
     if ((data >= hoje) && ((horadeinicio >= "07:00") && (horadeinicio <= "22:00")) && ((horadeentrega >= "07:00")
-        && (horadeentrega <= "23:35")) && (horadeinicio < horadeentrega)) {
+        && (horadeentrega <= "22:35")) && (horadeinicio < horadeentrega)) {
         firebase.database().ref('Usuarios').on('value', function (snapshot) {
             snapshot.forEach(function (item) {
                 if ((email === item.val().Email)) {
