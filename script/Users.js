@@ -44,7 +44,7 @@ if(Cadastrar!=null){
         ConfirmacaodeSenha.value="";
 
         setTimeout(function() {
-            window.location.href = "login.html";
+            window.location.href = "../index.html";
         }, 1000);
 
     })
@@ -89,7 +89,7 @@ if(Login!=null){
             Senha.value='';
             //Com determinado tempo, o login feito com sucesso encaminha para o index.html.
             setTimeout(function() {
-                window.location.href = "index.html";
+                window.location.href = "../index.html";
             }, 1000);
              
         
