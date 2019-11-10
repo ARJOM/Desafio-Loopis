@@ -20,7 +20,8 @@ var opcaomenu = "<div class='menu-left' ><ul>";
                     opcaomenu+="<li><a onclick='preencheUpdateTipoEspaco()' href='#'>Editar Tipos de Espaço</a> </li>";
                     opcaomenu+="<li><a onclick='preencheCadastroEspaco()' href='#' class='link-left'>Cadastrar Espaços</a></li>";
                     opcaomenu+="<li><a onclick='preencheUpdateEspaco()' href='#'>Editar Espaço</a> </li>";
-                    opcaomenu+="<li><a href='#' class='link-left'>Minhas Reservas</a></li>";
+                    opcaomenu+="<li><a onclick='reservarEspaco()' href='#'>Reservar Espaço</a> </li>";
+                    opcaomenu+="<li><a href='#' class='link-left' onclick='MinhasReservas()' >Minhas Reservas</a></li>";
 
     
                     firebase.database().ref('TiposdeEspaco').on('value', function (snapshot) {
@@ -54,8 +55,9 @@ var opcaomenu = "<div class='menu-left' ><ul>";
             //Função para menu de ativo a reserva
             else if ((email===item.val().Email) && (item.val().Ativo==="true")){
 
-                opcaomenu+="<li><a href='index.html' class='link-left'>Página Inicial</a></li>"
+            opcaomenu+="<li><a href='index.html' class='link-left'>Página Inicial</a></li>"
             opcaomenu+="<li><a onclick='preencheUpdate()' href='#' class='link-left'>Minha Conta</a></li>";
+            opcaomenu+="<li><a onclick='reservarEspaco()' href='#'>Reservar Espaço</a> </li>";
             opcaomenu+="<li><a href='#' class='link-left'>Minhas Reservas</a></li>";
             firebase.database().ref('TiposdeEspaco').on('value', function (snapshot) {
                 snapshot.forEach(function (item) {
@@ -67,7 +69,11 @@ var opcaomenu = "<div class='menu-left' ><ul>";
        
 
             }
-            else{
+            else if((email===item.val().Email) && (item.val().Ativo==="false")){
+              opcaomenu+="<li><a href='index.html' class='link-left'>Página Inicial</a></li>"
+              opcaomenu+="<li><a onclick='preencheUpdate()' href='#' class='link-left'>Minha Conta</a></li>";
+              opcaomenu+="<li><a href='#' class='link-left' onclick='MinhasReservas()' >Minhas Reservas</a></li>";
+
 
             }
           
