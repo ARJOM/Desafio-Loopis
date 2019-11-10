@@ -29,16 +29,17 @@ function preencheEspacos(key) {
 }
 
 function filtraEspacos(key) {
-    blocos = "";
+    blocos = "<div class='buscar-blocos'>";
     firebase.database().ref('Espaco').on('value', function (snapshot) {
         snapshot.forEach(function (item) {
             console.log(item.val().TipoEspaco);
             if (item.val().TipoEspaco === key){
                 console.log("Entrou")
-                blocos += "<div onclick=\"registrarReserva('"+item.val().Chave+"')\" id='"+item.val().Chave+"'><p>"+item.val().NomedoEspaco+"</p><p>"+item.val().Local+"</p></div></br>"
+                blocos += "<div onclick=\"registrarReserva('"+item.val().Chave+"')\" class ='buscar-grid' id='"+item.val().Chave+"'><p>"+item.val().NomedoEspaco+"</p><p>"+item.val().Local+"</p></div>";
             }
         });
     });
+    blocos += "</div>";
     setTimeout(function() {
     }, 2000);
     if (blocos === "") {
