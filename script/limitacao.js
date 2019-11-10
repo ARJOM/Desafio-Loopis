@@ -7,16 +7,16 @@ firebase.auth().onAuthStateChanged(function(user) {
     var menu = document.getElementById("menu");
    
     var opcaomenu = "<div class='menu-left' ><ul>";
-    opcaomenu+="<li><a href='index.html' class='link-left'>Página Inicial</a></li>"
-    opcaomenu+="<li><a onclick='preencheUpdate()' href='#' class='link-left'>Minha Conta</a></li>";
-    opcaomenu+="<li><a onclick='preencheCadastroTipo()' href='#' class='link-left'>Cadastrar Tipos de Espaços</a></li>";
-    opcaomenu+="<li><a onclick='preencheCadastroEspaco()' href='#' class='link-left'>Cadastrar Espaços</a></li>";
+    opcaomenu+="<li><a href='index.html' class='link-left' onclick='closeMenu()' >Página Inicial</a></li>"
+    opcaomenu+="<li><a onclick='closeMenu();preencheUpdate();' href='#' class='link-left'>Minha Conta</a></li>";
+    opcaomenu+="<li><a onclick='closeMenu();preencheCadastroTipo();' href='#' class='link-left'>Cadastrar Tipos de Espaços</a></li>";
+    opcaomenu+="<li><a onclick='closeMenu();preencheCadastroEspaco();' href='#' class='link-left'>Cadastrar Espaços</a></li>";
     
-    opcaomenu+="<li><a onclick='listaUser()' href='#' class='link-left'>Gerenciamento de Níveis de Usuários</a></li>";
-    opcaomenu+="<li><a onclick='listaUserReserva()' href='#' class='link-left'>Gerenciamento Status de Usuários</a></li>";
-    opcaomenu+="<li><a href='#' class='link-left'>Minhas Reservas</a></li>";
-    opcaomenu+="<li><a onclick='preencheUpdateTipoEspaco()' href='#'>Editar Tipos de Espaço</a> </li>";
-    opcaomenu+="<li><a onclick='preencheUpdateEspaco()' href='#'>Editar Espaço</a> </li>";
+    opcaomenu+="<li><a onclick='closeMenu();listaUser();' href='#' class='link-left'>Gerenciamento de Níveis de Usuários</a></li>";
+    opcaomenu+="<li><a onclick='closeMenu();listaUserReserva();' href='#' class='link-left'>Gerenciamento Status de Usuários</a></li>";
+    opcaomenu+="<li><a onclick='closeMenu();' href='#' class='link-left'>Minhas Reservas</a></li>";
+    opcaomenu+="<li><a onclick='closeMenu();preencheUpdateTipoEspaco();' href='#'>Editar Tipos de Espaço</a> </li>";
+    opcaomenu+="<li><a onclick='closeMenu();preencheUpdateEspaco();' href='#'>Editar Espaço</a> </li>";
 
     // <li><a href="#" class="link-left">Salas</a></li>
     // <li><a href="#" class="link-left">Laboratórios</a></li>
