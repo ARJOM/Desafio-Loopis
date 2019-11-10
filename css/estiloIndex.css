@@ -78,6 +78,7 @@ header {
 
 .link-left:hover{
     border-bottom: 1px solid white;
+    transition: all 500ms ease;
 }
 
 /* Estilizando filtagrem de espaços */
@@ -351,4 +352,39 @@ p {
     #menu {
         width: 0;
     }
+}
+
+.user-table table {
+    margin: 0 auto;
+    padding: 25px;
+
+}
+
+.user-table table th,tr,td {
+    padding: 5px;
+}
+
+.user-table table th {
+    text-transform: uppercase;
+    font-family: 'Open Sans Condensed', sans-serif;
+    letter-spacing: 3px;
+}
+
+.user-table table td {
+    margin: 5px;
+}
+
+.user-table table td a {
+    text-decoration: none;
+    color: black;
+}
+
+.user-table table td a:hover {
+    text-decoration: underline;
+}
+
+.user-table h2 {
+    text-align: center;
+    text-transform: uppercase;
+    font-family: 'Open Sans Condensed', sans-serif;
 }
