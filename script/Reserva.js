@@ -28,13 +28,15 @@ function reservarEspaco() {
     }, 1000);
 
 }
-var user = firebase.auth().currentUser;
-var email = user.email;
+
 
 //Criar uma reserva de Espaço
 function registrarReserva(){
     var user = firebase.auth().currentUser;
-    var email = user.email;
+    var email;
+    if (user != null) {
+        user.email;
+    }
     firebase.database().ref('Usuarios').on('value', function (snapshot) {
         snapshot.forEach(function (item) {
         if((email===item.val().Email)){
@@ -72,7 +74,11 @@ function registrarReserva(){
 
 //Ver todas as Reservas
 function MinhasReservas(){
-
+    var user = firebase.auth().currentUser;
+    var email;
+    if(user != null){
+        email = user.email;
+    }
     var main = document.getElementById("main");
     var resultado = "";
     resultado+="<h2>Reservas</h2>";
@@ -80,28 +86,34 @@ function MinhasReservas(){
     resultado += "<tr><th>Espaco</th><th>Data</th><th>Hora de Inicio</th><th>Hora de Entrega</th></tr>"
     firebase.database().ref('Usuarios').on('value', function (snapshot) {
         snapshot.forEach(function (item) {
-        if((email===item.val().Usuario)){
-            firebase.database().ref('Reserva').on('value', function (snapshot) {
-                snapshot.forEach(function (item) {
-                    resultado += "<tr>"
-                    resultado += "<td>"+ item.val().Espaco +"</td>";  
-                    resultado += "<td>"+ item.val().Data +"</td>";
-                    resultado += "<td>"+ item.val().HoradeInicio +"</td>";
-                    resultado += "<td>"+ item.val().HoradeEntrega +"</td>";
-                    resultado += "<td><a onclick=\"editarreserva('"+item.val().Chave+"')\" href='#'>Editar</a></td>";
-                    resultado += "<td><a onclick=\"deletarreserva('"+item.val().Chave+"')\" href='#'>Deletar</a></td>";
-                    resultado += "</tr>";
-                        });
+            console.log("Percorrendo email: "+item.val().Email);
+            console.log("Email Logado: "+email);
+            if((email===item.val().Email)){
+                var key = item.val().Chave;
+                console.log("Chave: "+key);
+                firebase.database().ref('Reserva').on('value', function (snapshot) {
+                    snapshot.forEach(function (item) {
+                        if (key === item.val().Usuario) {
+                            resultado += "<tr>"
+                            resultado += "<td>" + item.val().Espaco + "</td>";
+                            resultado += "<td>" + item.val().Data + "</td>";
+                            resultado += "<td>" + item.val().HoradeInicio + "</td>";
+                            resultado += "<td>" + item.val().HoradeEntrega + "</td>";
+                            resultado += "<td><a onclick=\"editarreserva('" + item.val().Chave + "')\" href='#'>Editar</a></td>";
+                            resultado += "<td><a onclick=\"deletarreserva('" + item.val().Chave + "')\" href='#'>Deletar</a></td>";
+                            resultado += "</tr>";
+                        }
                     });
-                    setTimeout(function() {
-                        resultado += "</table>";
-                        main.innerHTML = resultado;
-                    }, 1000);
-                
-                }
-
                 });
+                
+            }
+
         });
+    });
+    setTimeout(function() {
+        resultado += "</table>";
+        main.innerHTML = resultado;
+    }, 1000);
 
 }
 
