@@ -1,7 +1,7 @@
 //Função para listar todos os usuários cadastrados ativo ou não para cadastro inclusive o moderador;
 function listaUserReserva(){
     var main = document.getElementById("main");
-    var resultado = "";
+    var resultado = "<div class='user-table'>";
     resultado+="<h2>Usuários</h2>";
     resultado += "<table>";
     resultado += "<tr><th>Nome</th><th>Email</th><th>Ativo</th></tr>"
@@ -17,6 +17,7 @@ function listaUserReserva(){
     });
     setTimeout(function() {
         resultado += "</table>";
+        resultado += "</div>";
         main.innerHTML = resultado;
     }, 1000);
 }
