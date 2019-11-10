@@ -28,7 +28,6 @@ header {
 .right {
     grid-area: right;
     padding: 20px;
-    background: #FFFAF0;
 }
 
 .link-header{
@@ -37,7 +36,7 @@ header {
 }
 
 .logo{
-    margin-left: 130px;
+    margin-left: 50px;
 }
 
 .logout{
@@ -265,7 +264,8 @@ p {
 .responsive-button {
     position: absolute;
     top: 30px;
-    left: 50px;
+    left: 20px;
+    display: none;
 }
 
 .responsive-button span {
@@ -275,6 +275,17 @@ p {
     background-color: white;
     margin: 5px 0;
 } 
+
+.responsive-button::after {
+    content: "MENU";
+    position: absolute;
+    bottom: 5px;
+    left: 30px;
+    margin: 0 3px;
+    font-family: 'Open Sans Condensed', sans-serif;
+    color: white;
+    font-size: 20px;
+}
 
 .responsive-button:hover {
     cursor: pointer;
@@ -335,5 +346,13 @@ p {
         font-size: 20px;
         margin-left: 50px;
         margin-right: 0;
+    }
+
+    .responsive-button {
+        display: block;
+    }
+
+    .logo {
+        margin-left: 130px;
     }
 }
