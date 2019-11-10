@@ -13,9 +13,10 @@ function preencheUpdateTipoEspaco() {
             resultado += "<a onclick=\"insereTipo('"+item.val().Chave+"')\" href='#'>";
             resultado += item.val().TipoEspaco;
             resultado +="</a>";
-            resultado += "</div></div>";
+            
         });
     });
+    resultado += "</div></div>";
     setTimeout(function() {
         main.innerHTML = resultado;
     }, 1000);
