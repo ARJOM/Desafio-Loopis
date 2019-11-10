@@ -59,6 +59,8 @@ var opcaomenu = "<div class='menu-left' ><ul>";
             opcaomenu+="<li><a onclick='preencheUpdate();closeMenu();' href='#' class='link-left'>Minha Conta</a></li>";
             opcaomenu+="<li><a onclick='reservarEspaco();closeMenu();' href='#'>Reservar Espaço</a> </li>";
             opcaomenu+="<li><a href='#' class='link-left'>Minhas Reservas</a></li>";
+            opcaomenu+="<li class='dropdown-left'><a href='#' class='link-left'> Novas Reservas</a>"
+            opcaomenu+= "<ul class='dropdown1'>"
             firebase.database().ref('TiposdeEspaco').on('value', function (snapshot) {
                 snapshot.forEach(function (item) {
                   console.log(item.val().TipoEspaco);
@@ -66,8 +68,8 @@ var opcaomenu = "<div class='menu-left' ><ul>";
                    
             });
         });
-       
-
+            "</ul>"
+            "</li>";
             }
             else if((email===item.val().Email) && (item.val().Ativo==="false")){
               opcaomenu+="<li><a href='index.html' class='link-left'>Página Inicial</a></li>"
