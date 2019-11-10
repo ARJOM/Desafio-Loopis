@@ -1,13 +1,13 @@
+//Função para reiniciar o menu a cada modificação no banco.
 function abrir(){
-//Verificar se a conta está logada no autenticado do firebase
+//Verificar se a conta está logada no autenticado do firebase.
 firebase.auth().onAuthStateChanged(function(user) {
 if (user) {
-console.log( user );
-var user = firebase.auth().currentUser;
-var email = user.email;
-
-var menu = document.getElementById("menu");
-var opcaomenu = "<div class='menu-left' ><ul>";
+    console.log( user );
+    var user = firebase.auth().currentUser;
+    var email = user.email;
+    var menu = document.getElementById("menu");
+    var opcaomenu = "<div class='menu-left' ><ul>";
 
     firebase.database().ref('Usuarios').on('value', function (snapshot) {
         snapshot.forEach(function (item) {
@@ -27,8 +27,8 @@ var opcaomenu = "<div class='menu-left' ><ul>";
                 }
                 //Função para menu Moderador
                 if (item.val().Moderador==="true"){
-                    // Adicionar funções do moderador
-                }
+                    opcaomenu+="<li><a onclick='listaUserReserva();closeMenu();' href='#' class='link-left'>Gerenciamento Status de Usuários</a></li>";
+                    }
 
                 //Função para menu de ativo a reserva
                 if (item.val().Ativo==="true"){
@@ -69,7 +69,7 @@ var opcaomenu = "<div class='menu-left' ><ul>";
 
     
 
-var h1 = document.getElementById("h1");
+    var h1 = document.getElementById("h1");
     
     var cabecalho= "<div class='responsive-button' onclick='responsiveMenu()'>";
     cabecalho+= "<a><span></span><span></span><span></span></a>";
