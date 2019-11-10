@@ -1,5 +1,7 @@
-//Função para listar todos os usuários cadastrados inclusive o administrador;
+//Função para listar todos os usuários cadastrados menus o administrador logado;
 function listaUser(){
+    var user = firebase.auth().currentUser;
+    var email = user.email;
     var main = document.getElementById("main");
     var resultado = "<div class='user-table'>";
     resultado+="<h2>usuários cadastrados</h2>";
@@ -8,12 +10,14 @@ function listaUser(){
     //Listando todos os Usuários
     firebase.database().ref('Usuarios').on('value', function (snapshot) {
         snapshot.forEach(function (item) {
+            if(email!=item.val().Email){
             resultado += "<tr>"
             resultado += "<td><a onclick=\"editargerencia('"+item.val().Chave+"')\" href='#'>"+ item.val().Nome +"</a></td>";
             resultado += "<td>"+ item.val().Email +"</td>";
             resultado += "<td>"+ item.val().Moderador +"</td>";
             resultado += "<td>"+ item.val().Administrador +"</td>";
             resultado += "</tr>";
+        }
         });
     });
     setTimeout(function() {
