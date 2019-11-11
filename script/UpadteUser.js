@@ -100,7 +100,7 @@ async function insereEventoUpdate(){
                         }
                     });
                 });
-
+                abrir();
                 // user.Email = document.getElementById("novoEmail").value;
                 // user.Nome = document.getElementById("novoNome").value;
 
