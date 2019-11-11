@@ -11,10 +11,11 @@ function listaUserReserva(){
     firebase.database().ref('Usuarios').on('value', function (snapshot) {
         snapshot.forEach(function (item) {
             if(email!=item.val().Email){
-            resultado += "<tr>"
-            resultado += "<td><a onclick=\"editargerenciaReserva('"+item.val().Chave+"')\" href='#'>"+ item.val().Nome +"</a></td>";
+            resultado += "<tr>";
+            resultado += "<td>"+ item.val().Nome +"</td>";
             resultado += "<td>"+ item.val().Email +"</td>";
             resultado += "<td>"+ item.val().Ativo +"</td>";
+            resultado += "<td><a onclick=\"editargerenciaReserva('"+item.val().Chave+"')\" href='#'>Editar</a></td>";
             resultado += "</tr>";
             }
         });
