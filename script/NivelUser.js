@@ -14,8 +14,17 @@ function listaUser(){
             resultado += "<tr>"
             resultado += "<td>"+ item.val().Nome +"</td>";
             resultado += "<td>"+ item.val().Email +"</td>";
-            resultado += "<td>"+ item.val().Moderador +"</td>";
-            resultado += "<td>"+ item.val().Administrador +"</td>";
+            if (item.val().Moderador==="true"){
+                resultado += "<td>Positivo</td>";
+            } else{
+                resultado += "<td>Negativo</td>";
+            }
+            if (item.val().Administrador==="true"){
+                resultado += "<td>Positivo</td>";
+            }else{
+                resultado += "<td>Negativo</td>";
+            }
+
             resultado += "<td><a onclick=\"editargerencia('"+item.val().Chave+"')\" href='#'>Editar</a></td>";
             resultado += "</tr>";
         }
