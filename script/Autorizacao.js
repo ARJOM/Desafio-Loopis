@@ -6,7 +6,7 @@ function listaUserReserva(){
     var resultado = "<div class='user-table'>";
     resultado+="<h2>Status de Usuários Para Reserva</h2>";
     resultado += "<table>";
-    resultado += "<tr><th>Nome</th><th>Email</th><th>Ativo</th></tr>"
+    resultado += "<tr><th>Nome</th><th>Email</th><th>Status</th></tr>"
     //Listando todos os Usuários menos o atual moderador logado.
     firebase.database().ref('Usuarios').on('value', function (snapshot) {
         snapshot.forEach(function (item) {
@@ -14,7 +14,11 @@ function listaUserReserva(){
             resultado += "<tr>";
             resultado += "<td>"+ item.val().Nome +"</td>";
             resultado += "<td>"+ item.val().Email +"</td>";
-            resultado += "<td>"+ item.val().Ativo +"</td>";
+            if (item.val().Ativo==="true"){
+                resultado += "<td>Ativo</td>";
+            } else{
+                resultado += "<td>Inativo</td>";
+            }
             resultado += "<td><a onclick=\"editargerenciaReserva('"+item.val().Chave+"')\" href='#'>Editar</a></td>";
             resultado += "</tr>";
             }
