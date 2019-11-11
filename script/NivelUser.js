@@ -12,10 +12,11 @@ function listaUser(){
         snapshot.forEach(function (item) {
             if(email!=item.val().Email){
             resultado += "<tr>"
-            resultado += "<td><a onclick=\"editargerencia('"+item.val().Chave+"')\" href='#'>"+ item.val().Nome +"</a></td>";
+            resultado += "<td>"+ item.val().Nome +"</td>";
             resultado += "<td>"+ item.val().Email +"</td>";
             resultado += "<td>"+ item.val().Moderador +"</td>";
             resultado += "<td>"+ item.val().Administrador +"</td>";
+            resultado += "<td><a onclick=\"editargerencia('"+item.val().Chave+"')\" href='#'>Editar</a></td>";
             resultado += "</tr>";
         }
         });
