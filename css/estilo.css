@@ -1,0 +1,112 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #1C1C1C;
+}
+
+.container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.box {
+    padding: 100px;
+    background-color: #f8f8ff;
+    border-radius: 20px;
+    position: relative;
+}
+
+#cadastro {
+    width: 300px;
+    height: 400px;
+}
+
+#login {
+    width: 250px;
+    height: 300px;
+}
+
+.title {
+    text-align: center;
+    padding: 10px;
+    margin: 0;
+    font-family: 'Open Sans Condensed', sans-serif;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+}
+
+.form-log-cad {
+    margin: 0px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+}
+
+.form-log-cad p {
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 18px;
+}
+
+.sign {
+    padding: 5px;
+    border: none;
+    border-bottom: 1px solid #43CD80;
+}
+
+.submit {
+    padding: 10px;
+    margin: 20px auto;
+    width: 100px;
+    border-radius: 15px;
+    background-color: #008B45;
+    border: none;
+    text-align: center;
+}
+.submit a {
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: 'Open Sans Condensed', sans-serif;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+.submit:hover {
+    cursor: pointer;
+}
+
+.form-log-cad a {
+    text-align: center;
+    margin-top: 5px;
+    padding-top: 5px;
+    color: #B5B5B5;
+    font-size: 14px;
+    text-decoration: none;
+    font-family: 'Open Sans Condensed', sans-serif;
+}
+
+.form-log-cad a:hover {
+    text-decoration: underline;
+}
+
+/* fazer modificações aqui! responsividade não ta legal */
+@media (max-width:400px){
+    .box {
+        width: 35vw;
+    }
+    .form-log-cad {
+        padding: 0;
+    }
+    .form-log-cad a {
+        margin: 0;
+        font-size: 14px;
+        text-decoration: underline;
+    }
+}
+
+@media (min-width:768px) and (max-width: 1200px) {
+    .box {
+        width: 50vw;
+    }
+}

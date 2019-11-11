@@ -1,0 +1,551 @@
+/* Layout da página */
+
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 0.8fr 3.2fr;
+    grid-template-rows: 15vh 85vh;
+    grid-template-areas: "header header" "left right";
+}
+
+header {
+    grid-area: header;
+    background: #1C1C1C;
+    display: flex;
+    justify-content: space-between;
+}
+
+.left {
+    grid-area: left;
+    background: #1C1C1C;
+}
+
+.right {
+    grid-area: right;
+    padding: 20px;
+}
+
+.link-header{
+    margin: 35px;
+    font-family: 'Open Sans Condensed', sans-serif;
+}
+
+.logo{
+    margin-left: 50px;
+}
+
+.logout{
+    width: 20px;
+}
+
+.menu-left li{
+    margin: 15px;
+    font-family: 'Open Sans Condensed', sans-serif;
+}
+
+.menu-left a:link, .link-header:link{
+    text-decoration: none;
+    color: white;
+    text-transform: uppercase;
+}
+
+.menu-left a:visited, .link-header:visited{
+    color: white;
+    text-transform: uppercase;
+}
+
+.menu-left ul, .link-header{
+    list-style: none;      
+}
+
+.dropdown1{
+    display: none;
+}
+
+.dropdown-left:hover ul{
+    display: block; 
+}
+
+.dropdown-left:hover ul li{
+    margin: 0;
+    padding-top: 8px;
+}
+
+.link-left:hover{
+    border-bottom: 1px solid white;
+    transition: all 500ms ease;
+}
+
+/* Estilizando filtagrem de espaços */
+
+.buscar {
+    padding: 10px;
+}
+
+.buscar-espaco {
+    display: flex;
+    justify-content: center;
+}
+
+.buscar-espaco .btn {
+    width: 70px;
+    text-align: center;
+    margin: 10px 0;
+}
+
+p {
+    font-family: 'Open Sans Condensed', sans-serif;
+    margin: 0 0 5px 0;
+    padding: 0;
+}
+
+.reserva {
+    display: flex;   
+}
+
+.reserva .content {
+    margin: 0 20px;
+}
+
+.buscar-blocos {
+    display: grid;
+    grid-template-columns: 100px 100px 100px 100px;
+    justify-content: space-evenly;
+    margin-top: 100px;
+    grid-row-gap: 10px;
+}
+
+.buscar-grid {
+    border: 1px solid #008B45;
+    margin: 7px;
+    border-radius: 10px;
+    text-align: center;
+    width: 100px;
+    padding: 5px;
+}
+
+.buscar-grid:hover {
+    cursor: pointer;
+}
+
+
+/* estilo dos botões */
+.btn {
+    border: none;
+    background-color: #008B45;
+    color: white;
+    border-radius: 5px;
+    font-size: 14px;
+    width: 100px;
+    text-transform: uppercase;
+    font-family: 'Open Sans Condensed', sans-serif;
+    margin-left: 5px;
+    text-decoration: none;
+    padding: 10px;
+}
+
+.btn:hover {
+    cursor: pointer;
+}
+
+/* tela de tipo de espaço */
+
+#tipoespaco {
+    padding: 10px;
+}
+
+.textocentralizado{
+    text-align: center;
+    font-family: 'Open Sans Condensed', sans-serif;
+    text-transform: uppercase;
+}
+
+.espaco {
+    padding-left: 400px;
+    padding-top: 30px;
+}
+
+.botoes {
+    margin-left: 390px;
+}
+
+.espaco input {
+    padding: 5px;
+    border: none;
+    border-bottom: 1px solid #008B45;
+    margin-bottom: 25px;
+    width: 250px;
+}
+
+#ListadeTipodeEspaco {
+    margin-bottom: 30px;
+}
+
+.buscar-box {
+    display: flex;
+    justify-content: center;
+}
+
+.buscar-box .botoes {
+    margin-left: 5px;
+    padding-top: 35px;
+}
+
+/* tela de atualização de usuário */
+.titlePaginaI{
+    text-align: center;
+    font-family: 'Open Sans Condensed', sans-serif;
+}
+
+.textPaginaI{
+    margin: 80px;
+    line-height: 1.8;
+    font-size: 20px;
+    text-align: justify;
+}
+/* Estilizando tela de atualização de usuário */
+
+.update h2 {
+    text-align: center;
+    text-transform: uppercase;
+    font-family: 'Open Sans Condensed', sans-serif;
+    letter-spacing: 3px;
+    margin-right: 100px;
+}
+
+.update form {
+    display: grid;
+    grid-template-columns: 200px 200px;
+    grid-template-rows: 100px 100px 100px 30px;
+    grid-template-areas: "email email" "nome atual" "nova confirmar" "remover atualizar";
+    justify-content: space-evenly;
+    margin-top: 40px;
+    margin-right: 150px;
+    grid-column-gap: 15px;
+    grid-row-gap: 25px;
+}
+
+#email {
+    grid-area: email;
+}
+
+#nome {
+    grid-area: nome;
+}
+
+#newSenha {
+    grid-area: nova;
+}
+
+#confirm {
+    grid-area: confirmar;
+}
+
+#SenhaAtual {
+    grid-area: atual;
+}
+
+.update .submit {
+    grid-area: atualizar;
+    border: 1px solid #008B45;
+    background-color: #008B45;
+    text-align: center;
+    border-radius: 3px;
+}
+
+.update .delete {
+    grid-area: remover;
+    border: 1px solid #EE2C2C;
+    background-color: #EE2C2C;
+    text-align: center;
+    border-radius: 3px;
+}
+
+.update-content input {
+    padding: 5px;
+    width: 300px;
+    border: none;
+    border-bottom: 1px solid #008B45;
+}
+
+.update-content h3 {
+    text-transform: uppercase;
+    font-family: 'Open Sans Condensed', sans-serif;
+}
+
+#novoEmail {
+   width: 650px;
+}
+
+.submit, .delete {
+    width: 100%;
+    margin-left: 50px;
+}
+
+.submit, .delete a {
+    color: white;
+    text-transform: uppercase;
+    font-family: 'Open Sans Condensed', sans-serif;
+}
+
+.submit , .delete:hover {
+    cursor: pointer;
+}
+
+/* botão pra fechar e abrir menu lateral */
+
+#menu {
+    height: 85vh;
+    background-color: #1C1C1C;
+    transition: all 500ms linear;
+}
+
+#menu.active {
+    width: 250px;
+}
+
+#menu.unactive {
+    width: 0;
+}
+
+.responsive-button {
+    position: absolute;
+    top: 30px;
+    left: 20px;
+    display: none;
+}
+
+.responsive-button span {
+    display: block;
+    width: 30px;
+    height: 5px;
+    background-color: white;
+    margin: 5px 0;
+} 
+
+.responsive-button:hover {
+    cursor: pointer;
+}
+
+/* Estilo das tabelas */ 
+
+.user-table table {
+    margin: 0 auto;
+    padding: 25px;
+
+}
+
+.user-table table th,tr,td {
+    padding: 5px;
+}
+
+.user-table table th {
+    text-transform: uppercase;
+    font-family: 'Open Sans Condensed', sans-serif;
+    letter-spacing: 3px;
+}
+
+.user-table table td {
+    margin: 5px;
+}
+
+.user-table table td a {
+    text-decoration: none;
+    color: black;
+}
+
+.user-table table td a:hover {
+    text-decoration: underline;
+}
+
+.user-table h2 {
+    text-align: center;
+    text-transform: uppercase;
+    font-family: 'Open Sans Condensed', sans-serif;
+}
+
+/* tela de tipos */
+
+.tipos-box h2 {
+    text-align: center;
+    text-transform: uppercase;
+    font-family: 'Open Sans Condensed', sans-serif;
+}
+
+.tipos-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.tipos-content a {
+    color: black;
+    text-decoration: none;
+    font-size: 20px;
+    text-transform: capitalize;
+    font-family: 'Open Sans Condensed', sans-serif;
+    margin-top: 5px;
+}
+
+.tipos-content a:hover {
+    text-decoration: underline;
+}
+
+.tipos-content2 {
+    padding-left: 250px;
+}
+
+/* estilo de gerenciamento de usuários */
+
+.user-status-box {
+    margin-top: 50px;
+}
+
+.user-status-box h2 {
+    font-family: 'Open Sans Condensed', sans-serif;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.user-status-box form {
+    padding: 10px;
+    margin-left: 400px;
+}
+
+.user-status-box form input {
+    padding: 5px;    
+    margin: 5px 0;
+    width: 200px;
+}
+
+.botoes-espaco {
+    margin-left: 415px;
+}
+
+/* Breakpoint para responsividade (celular) */
+
+@media screen and (max-width: 400px) {
+
+    /*telas de filtragem*/
+
+    .buscar {
+        padding: 0;
+    }
+
+    .btn {
+        margin-top: 5px;
+        width: 80px;
+        font-size: 12px;
+    }
+
+    .right {
+        padding: 0;
+    }
+
+    .espaco {
+        padding-left: 0;
+        padding-top: 30px;
+    }
+
+    .botoes {
+        margin-left: 5px;
+        margin-top: 15px;
+    }
+
+    .buscar-box {
+        flex-wrap: wrap;
+    }
+
+    /* tela de update de usuário */
+    .update {
+        width: 0;
+    }
+    .update form {
+        grid-template-columns: 200px;
+        grid-template-rows: 100px 100px 100px 100px 100px 30px 30px;
+        grid-template-areas: "email" "nome" "atual" "nova" "confirmar" "remover" "atualizar";
+        justify-content: center;
+        grid-row-gap: 5px;
+        margin-top: 10px;
+        margin-left: 45px;
+        margin-right: 0;
+        padding-bottom: 15px;
+    }
+    #novoEmail {
+        width: 300px;
+    }
+
+    .update h2 {
+        font-size: 20px;
+        margin-left: 50px;
+        margin-right: 0;
+    }
+
+    .responsive-button {
+        display: block;
+    }
+
+    .logo {
+        margin-left: 130px;
+    }
+    
+    #menu {
+        width: 0;
+    }
+
+    /* tela de filtros de espaços */
+    .buscar-blocos {
+        grid-template-columns: 100px 100px;
+        justify-content: space-evenly;
+        margin-top: 50px;
+        margin-right: 75px;
+        grid-row-gap: 5px;
+    }
+    
+    .buscar-grid {
+        border: 1px solid #008B45;
+        margin: 7px;
+        border-radius: 10px;
+        text-align: center;
+        width: 80px;
+        padding: 5px;
+    }
+
+    .buscar-espaco {
+        flex-direction: column;
+    }
+    
+    .buscar-espaco .btn {
+        width: 70px;
+        text-align: center;
+        margin: 30px 0 10px 55px;
+    }
+    .reserva { 
+        flex-direction: column;
+        margin-left: 25px;
+        margin-top: 50px;
+    }
+    .reserva .content {
+        margin: 5px;
+    }
+
+    .reserva input {
+        width: 150px;
+    }
+}
+
+.positivo::after {
+    content: url('../images/iconfinder_Checkmark_1891021.png');
+    margin-left: 30px;
+}
+
+.negativo::after {
+    content: url('../images/iconfinder_lowercase_letter_x_red_3052270.png');
+    margin-left: 30px;
+}

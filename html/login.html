@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../css/estilo.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Staatliches&display=swap" rel="stylesheet">
+    <title>Sr - Login de Usuário</title>
+    <script type="text/javascript">
+        window.onload = function(){
+          firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+          window.location.href = "../index.html";
+        } 
+      });
+        }
+        </script>
+</head>
+<body>
+    <div class="container">
+        <div class="box" id="login">
+            <h2 class="title">Login</h2>
+            <form class="form-log-cad">
+                <p>Email</p>
+                <input type="email" name="" placeholder="Insira seu email acadêmico" class="sign" id="email">
+                <p>Senha</p>
+                <input type="password" name="" placeholder="Insira sua senha" class="sign" id="senha">
+                <a href="#">Esqueceu sua senha?</a>
+                <a href="../html/cadastro.html">Ainda não possui uma conta?</a>
+            </form>
+            <div class="submit">
+                <a id="logar">entrar</a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+    https://firebase.google.com/docs/web/setup#config-web-app -->
+
+    <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-database.js"></script> 
+    <script src="../script/Firebase.js"></script>
+    <script src="../script/Users.js"></script>
+    <script src="../script/Limitacao.js"></script>
+</body>
+</html>

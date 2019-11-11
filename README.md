@@ -15,3 +15,5 @@
 Para o desenvolvimento a equipe optou por utilizar a linguagem de programação **JavaScript**, e os serviços do **FireBase** para armazenamento de dados.
 
 Acesse o documento de requisitos [aqui](https://docs.google.com/document/d/1Xi8zoETZqdU3AXheP9HmHixEGiXk7OsdLGZzL70RFzw/edit?usp=sharing)
+
+Acesse a pasta com as imagens de prototipação [aqui](https://drive.google.com/drive/folders/19dG8oUDALTwlNw6alhTn7FHo9ApNGIqY?usp=sharing)
