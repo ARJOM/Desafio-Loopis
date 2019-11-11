@@ -539,3 +539,13 @@ p {
         width: 150px;
     }
 }
+
+.positivo::after {
+    content: url('../images/iconfinder_Checkmark_1891021.png');
+    margin-left: 30px;
+}
+
+.negativo::after {
+    content: url('../images/iconfinder_lowercase_letter_x_red_3052270.png');
+    margin-left: 30px;
+}
